@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="SET-2.0b" writer="impl" written="2026-09-05T08:38:10.000Z">
+  <app>Tracker</app>
+  <body>SET-2.0b Style card -- impl status: in-progress, built this turn. Aspect default, notes, palette, pinned refs max 5. Inspector Style tab is on (not gated on GROK_TOOLS). How to verify: a frame knows its aspect; pin up to 5 imports for Grok/Imagine.</body>
+</discussion>

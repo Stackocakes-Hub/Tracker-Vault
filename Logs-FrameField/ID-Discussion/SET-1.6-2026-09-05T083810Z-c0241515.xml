@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="SET-1.6" writer="impl" written="2026-09-05T08:38:10.000Z">
+  <app>Tracker</app>
+  <body>SET-1.6 Layer data and panel -- impl status: in-progress, built this turn. Inspector Layers tab: create, rename (user layers), hide, lock, reorder, opacity. System bands guides/ghosts/comments/presence reserved. Move selection changes layerId+order only. How to verify: two layers, hide one, move a frame. Camera unchanged. Draw still matches ghost.</body>
+</discussion>

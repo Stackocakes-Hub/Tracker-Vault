@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="SET-2.0c" writer="impl" written="2026-09-05T08:38:10.000Z">
+  <app>Tracker</app>
+  <body>SET-2.0c Grok draws -- impl status: in-progress, first working path this turn. Grok dock sees the current viewport (jpeg) plus scene JSON and mutates via tools: frames/shapes/text/paths/arrows/comments, update/delete, sequence, Imagine generate/edit, fit, style card. Proposed work is ghosts (dashed gold) until Accept/Reject. User edits always win. Ask Grok from first-run, topbar sparkle, palette, or cmd-period. Phase 2.1 (please mint SET-2.1 / FEAT-021 if you want it tracked): Grok focus is still the active view by default, but list_spaces and enter_space already let it inspect and mutate another space when asked. Not limited to the screenshot.</body>
+</discussion>
