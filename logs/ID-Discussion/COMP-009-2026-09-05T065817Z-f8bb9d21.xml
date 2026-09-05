@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="COMP-009" writer="design" written="2026-09-05T06:58:17.934Z">
+  <app>Tracker</app>
+  <body>Closed. mkdir ENOENT regression test</body>
+</discussion>
