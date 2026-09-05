@@ -12,8 +12,9 @@ Each project is a folder named `Logs-<ProjectName>/`.
 |---|---|
 | `Logs-<ProjectName>/` | Status XML, HEAD, MANIFEST |
 | `Logs-<ProjectName>/ID-Discussion/` | One XML file per question or reply |
+| `TRACKER_ORIGIN.txt` | Live Tracker website URL (humans). Grok does not POST pictures there. |
 | `PROTOCOL.md` | Hash names, three-file commit, revision, writers, pictures |
 
-Pictures are **not** stored here. Origin for picture POST is `TRACKER_ORIGIN.txt` at repo root. See PROTOCOL.md.
+Grok pictures: host the file yourself, `<image href="https://…"/>`. Do not POST to Tracker.
 
 Repo: https://github.com/Stackocakes-Hub/Tracker-Vault

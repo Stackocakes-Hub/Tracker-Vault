@@ -19,6 +19,7 @@ See also the PROTOCOL.md inside each project folder (same rules, with that folde
 | Path | Role |
 |---|---|
 | `PROTOCOL.md` | This document. Read it first. |
+| `TRACKER_ORIGIN.txt` | Live website URL for humans. Grok does not upload pictures there. |
 | `Logs-<Project>/HEAD.xml` | Newest delta. Always read. Always overwrite on write. |
 | `Logs-<Project>/MANIFEST.txt` | One filename per line, oldest first, `HEAD.xml` last. |
 | `Logs-<Project>/YYYY-MM-DDTHHmmssZ-<hash>.xml` | Immutable dated entries. Never edit. Never delete. |
@@ -149,7 +150,7 @@ One new XML per message in `Logs-<Project>/ID-Discussion/`.
 <discussion schema="1" target="BUG-001" writer="impl" written="2026-09-05T12:00:00-05:00">
   <app>Tracker</app>
   <body>Question or reply. Plain text. Concept art attached.</body>
-  <image name="BUG-001-2026-09-05T120000Z-ab12cd34.jpg"/>
+  <image href="https://your-host.example/concept.jpg"/>
 </discussion>
 ```
 
@@ -162,42 +163,25 @@ Do not edit old discussion files.
 
 ## Pictures (Grok concept art, screenshots)
 
-**Do not put image bytes in this GitHub vault.** No `Pictures/` folder, no base64 in XML, no SVG.
+**Grok does not POST pictures to Tracker.** The published site is behind a Grok login; impl cannot upload there. **Do not** put image bytes in this GitHub vault either.
 
-XML only stores the filename:
+Host the file **yourself** (any https URL you control: GitHub raw on a repo you can write, an object store, etc.). Point at it from XML:
 
 ```xml
-<image name="FEAT-006-2026-09-05T150000Z-ab12cd34.jpg"/>
+<image href="https://your-host.example/path/concept.jpg"/>
 ```
 
-### How Grok attaches a picture
+Rules:
 
-1. Generate or capture **png, jpg, webp, or gif**. No SVG. Max **2 MB**. Max **4** images per message.
-2. POST **raw file bytes** (not JSON, not base64) to the **live Tracker website**:
+- `href` must be `https://` only. No `http`, no `data:`, no SVG.
+- Optional `name` is ignored when `href` is present.
+- Max 4 `<image>` tags per message.
+- Tracker displays the URL as an `<img src>`. If the host blocks hotlinking, the picture will not show — that is your host, not Tracker.
+- Website users attaching from the Tracker UI still use the site's own picture store. That path is **not** for Grok.
 
-```
-POST {TRACKER_ORIGIN}/api/picture?project={ProjectId}&scope=discussion&target={FEAT-006}
-Content-Type: image/jpeg
-<body = the file bytes>
-```
+If you cannot host a public https image, post the discussion **text** only.
 
-- `project` = subject id, e.g. `Tracker` or `FrameField`
-- `scope=discussion` for a thread; `scope=log` only for a ticket-log screenshot
-- `target` = the ticket id (`FEAT-006`, `BUG-001`, …)
-
-3. JSON response: `{ "ok": true, "name": "FEAT-006-….jpg" }`. Use that **exact** `name`.
-4. Add `<image name="…"/>` on the discussion (or log) XML.
-5. Commit the XML as usual. **Do not** `push_files` the image.
-
-GET for humans/site: `{TRACKER_ORIGIN}/api/picture?project={ProjectId}&name={name}`
-
-Bytes live on **Vercel Blob** at key `pictures/{project}/{scope}/{name}`. Preview without a Blob token may keep a local copy only; that does not survive publish.
-
-If POST fails, still post the discussion **text** and say the picture could not be stored. Do not fall back to GitHub binaries.
-
-**TRACKER_ORIGIN is in this vault.** Read file `TRACKER_ORIGIN.txt` at the repo root (`github___get_file_contents` path `TRACKER_ORIGIN.txt`). Use the first line that starts with `https://`, no trailing slash. That is the live Tracker website. Do not ask design. Do not guess a host. If that file has no `https://` line yet, the site has not published its origin — post discussion text without a picture and wait; the live app writes the file on first load after publish.
-
-Allowed name charset: `[A-Za-z0-9._-]`. Missing or bad pictures are skipped; they do not break the scanner.
+Missing or bad pictures are skipped; they do not break the scanner.
 
 ## What not to write
 

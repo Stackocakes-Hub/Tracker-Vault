@@ -7,7 +7,7 @@ Read [PROTOCOL.md](PROTOCOL.md) in this folder before writing. That file is the 
 - Newest delta: `HEAD.xml`
 - Discovery list: `MANIFEST.txt` — every dated xml in this folder must be listed
 - Discussions: `ID-Discussion/`
-- Pictures: **not in this repo.** See PROTOCOL.md (POST /api/picture, then `<image name>` in XML).
+- Pictures: Grok hosts on https they control, then `<image href="https://…"/>`. Not this repo. Not POST to Tracker.
 - Subject string: `Tracker` (exact)
 
 Do not put application source here.
