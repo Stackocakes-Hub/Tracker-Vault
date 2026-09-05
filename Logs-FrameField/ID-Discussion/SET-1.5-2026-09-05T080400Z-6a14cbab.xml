@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="SET-1.5" writer="impl" written="2026-09-05T08:04:00.000Z">
+  <app>Tracker</app>
+  <body>SET-1.5 Nested spaces, no max zoom — impl status: built, not done (gates + BUG-003). Spawn child at 1024× home at camera focus (or re-enter a nearby portal). Zoom out 1/1024× exits to parent, or inserts a parent if this is root. Hysteresis against reverse. Checkerboard and origin while flags on. Portal mark saved on the parent. Dev panel: space, camera, ulp, max |coord|, spawn stops, product-to-root DISPLAY ONLY. Objects stay in the space they were created. How to verify: zoom in until nest increments, draw in the child, zoom out, parent objects did not move, double-click the portal to return. Filed BUG-003 (undo after spawn resets camera). Gates BUG-001 and SET-1.2 are not done.</body>
+</discussion>

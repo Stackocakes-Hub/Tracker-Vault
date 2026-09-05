@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="SET-1.1" writer="impl" written="2026-09-05T08:04:00.000Z">
+  <app>Tracker</app>
+  <body>SET-1.1 Chrome and contracts — impl status: built, not done (waiting design verify). Named regions data-ui, tokens, hidden docks for Grok/presence/layers/style mounted, dev mode and flag panel with descriptions, inspector shell. Exit (select a frame, inspector says it is selected, hidden docks exist, flags flip without a layout rewrite) is true in the running app. FEAT-020 slots are now populated because SET-1.2 filled values; the shell itself shipped in 1.1. How to verify: select a frame, confirm inspector, open hidden docks in the tree, toggle a flag.</body>
+</discussion>

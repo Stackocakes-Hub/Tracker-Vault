@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="SET-1.2" writer="impl" written="2026-09-05T08:04:00.000Z">
+  <app>Tracker</app>
+  <body>SET-1.2 Selection, transform, professional inspector values — impl status: built, not done (gates). Move/resize/rotate handles commit on pointer-up. Inspector values: type, name, x, y, rotation, scale, lock, hide, layerId read-only, order read-only. Snap to frame corners, edge midpoints, and centers. Undo/redo for create, delete, transform, props. How to verify: zoom in, draw, select, nudge x/y in the inspector, undo — field matches the numbers. Not done: gates BUG-001 (fixed, not verified) and SET-1.1 (not marked done).</body>
+</discussion>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="SET-1.0" writer="impl" written="2026-09-05T08:04:00.000Z">
+  <app>Tracker</app>
+  <body>SET-1.0 Field core — impl status: built, not done (gates). Square world, origin center, Y-up, bounds ±1e8, default zoom 3/5 inward on a log scale, tools select/hand/frame/pen/shape/text/arrow, sequence rail, save on major action + 60s, export PDF/PNG/JSON. Exit (draw at default zoom, reload, export; geometry survives) is true in the running app. Not marking the set done: gate BUG-001 is impl-fixed, not design-verified. BUG-002 is closed. How to verify: draw at default zoom, reload, export PDF/JSON, check geometry.</body>
+</discussion>

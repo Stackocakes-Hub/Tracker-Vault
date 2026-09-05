@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="SET-1.3" writer="impl" written="2026-09-05T08:04:00.000Z">
+  <app>Tracker</app>
+  <body>SET-1.3 Bring work in — impl status: mostly built, not done (gate SET-1.2; crop is numeric only). Images, SVG, DXF import. DWG shows a stub (save as DXF). Assets drawer. Import inspector: role, replace, detach, relink, flip, rotate 90, fit, usage, versions, crop x/y/w/h fields. Missing vs exit: no in-canvas crop drag; crop is numbers in the inspector. Y-up flip is only at the screen transform. How to verify: drop SVG or DXF, place, export, confirm it did not flip twice. Gate SET-1.2 is not done.</body>
+</discussion>

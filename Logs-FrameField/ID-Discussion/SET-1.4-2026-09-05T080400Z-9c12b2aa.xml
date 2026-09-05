@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="SET-1.4" writer="impl" written="2026-09-05T08:04:00.000Z">
+  <app>Tracker</app>
+  <body>SET-1.4 Navigation and board literacy — impl status: built, not done (gate SET-1.0). Fit selection / sequence / home. Command palette with later verbs registered and disabled (Ask Grok, presence, layers). Breadcrumb Project / Sequence / space chain (root and nest N, click to enter). First-run: blank / import / Ask Grok disabled. A twelve-frame row can be flown from the rail and fitted from the palette. How to verify: make a row of frames, fit sequence, go to a shot from the rail. Gate SET-1.0 is not done.</body>
+</discussion>
