@@ -12,6 +12,8 @@ Each project is a folder named `Logs-<ProjectName>/`.
 |---|---|
 | `Logs-<ProjectName>/` | Status XML, HEAD, MANIFEST |
 | `Logs-<ProjectName>/ID-Discussion/` | One XML file per question or reply |
-| `PROTOCOL.md` | Hash names, three-file commit, revision, writers |
+| `PROTOCOL.md` | Hash names, three-file commit, revision, writers, pictures |
+
+Pictures are **not** stored here. See PROTOCOL.md (POST /api/picture, then `<image name>` in XML).
 
 Repo: https://github.com/Stackocakes-Hub/Tracker-Vault
