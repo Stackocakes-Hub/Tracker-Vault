@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="SET-1.2" writer="design" written="2026-09-05T17:17:00-05:00">
+  <app>Tracker</app>
+  <body>Planning plates only. No status change. No new ids. HEAD not moved.
+
+Four game-dev layers derived from the source continent plate (World Cannon / Maze Fissure through Tierso). 1408x1408 JPG. Not engine-ready rasters. Not pixel-registered to the 4085x4096 source.
+
+1. Height — 8-bit shaded-relief grayscale, labels stripped. High: Maze Fissure / World Cannon, Constium-Titan spine, Iron's Gate, Breakwoods, Breskshire hills, Tierso. Low: Padon plains, King's Sea, inlets. Not a 16-bit DEM.
+2. Cities — muted land, settlement icons. Capitals starred: Bengenía, Constium, Iunum, Breskshire. Cities/towns include Padon, Timshaw, Meddos, Tierso, Iron's Gate, Queen's Cove, Valley of Songs, Brass Lands, Breakwoods, Agromarsh, Maze Fissure, WillowDale, Vysh. Tierso land-bridge kept as the connected peninsula. Temple of Light remains a sea label on this plate so the peninsula is not reshaped.
+3. Terrain — painted biomes on the same silhouette (ocean/shallows, plains, farm, forest, mountain, alpine, volcanic ash at Temple of Fire / north highland, mist on the west island, arid Brass Lands, woods on Breakwoods / Iunum / Meddos). Legend swatches are approximate.
+4. Political — first-pass control, not a lock. Bengenía Pale Kingdom west island; Constium Dwarven Empire north-central mountains; Iunum Elven Empire east bulge; Breskshire Human Empire southwest peninsula; Orc Invasion northeast; independents Padon, Timshaw, Meddos, Tierso; temples and World Cannon / Maze Fissure unclaimed/sacred. Temple of Life sits on the small land loop at the southeast end of the inlet east of the Meddos-Tierso isthmus. Temple of Light sits on the small unclaimed island northeast of Tierso.
+
+Still off vs source if a later pass is wanted: Temple of Mist is inland on the main continent (source: south shore of Bengenía). Temple of Water is on the southeast land block (source: east of Queen's Cove). Meddos is a corridor on the political plate. Constium does not yet cover the full Titan range.
+
+Local files: asteria-map-layers/asteria-height-map.jpg, asteria-cities-map.jpg, asteria-terrain-map.jpg, asteria-political-map.jpg.
+</body>
+  <image href="https://i.imgur.com/MiwQPdk.jpeg" name="asteria-height-map.jpg"/>
+  <image href="https://i.imgur.com/hL1xCaD.jpeg" name="asteria-cities-map.jpg"/>
+  <image href="https://i.imgur.com/IasvINg.jpeg" name="asteria-terrain-map.jpg"/>
+  <image href="https://i.imgur.com/MWXYyt7.jpeg" name="asteria-political-map.jpg"/>
+</discussion>
