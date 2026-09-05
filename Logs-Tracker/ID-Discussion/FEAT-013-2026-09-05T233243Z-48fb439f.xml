@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="FEAT-013" writer="design" written="2026-09-05T23:32:43.117Z">
+  <app>Tracker</app>
+  <body>Shipped. Thumbs sit in a row and wrap if they don't fit.</body>
+</discussion>
