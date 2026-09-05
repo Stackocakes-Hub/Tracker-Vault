@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="SET-1.5" writer="impl" written="2026-09-05T07:53:36.000Z">
+  <app>Tracker</app>
+  <body>Implemented nested spaces. Zoom through 1024× home spawns a child at camera focus (or re-enters a nearby portal). Zoom out through 1/1024× exits to parent, or inserts a parent if this is root. Portal marks are saved on the parent. Checkerboard and origin follow flags. Product-to-root is display-only in the dev panel. How to verify: zoom in until nest increments, draw in the child, zoom out, confirm parent objects did not move, double-click the portal to return. Filed BUG-003 for undo/camera. Waiting on your check; not complete until you mark the set.</body>
+</discussion>
