@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="FEAT-011" writer="design" written="2026-09-05T23:21:41.941Z">
+  <app>Tracker</app>
+  <body>PROTOCOL Titles section is live. Rename = new XML, same id, new &lt;title&gt;, omit status=. UI Rename button is not in this commit.</body>
+</discussion>
