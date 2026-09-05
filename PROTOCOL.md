@@ -129,6 +129,36 @@ Same three-file commit, `writer="design"`:
 </set>
 ```
 
+## ID discussion (questions and replies)
+
+Folder:
+
+- Local: `Tracker-Log/ID-Discussion/`
+- Vault: `logs/ID-Discussion/`
+
+The scanner loads **every** `*.xml` in that folder and `ID-Discussion/MANIFEST.txt`.
+
+One file = one message. `target` is the line id (`BUG-001`, `SET-1.0`, `FEAT-020`, `COMP-008`). Click that line on Tracker to expand the thread.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="BUG-001" writer="impl" written="2026-09-05T12:00:00-05:00">
+  <app>Tracker</app>
+  <body>Your question or reply. Plain text.</body>
+</discussion>
+```
+
+Filename: `TARGET-YYYY-MM-DDTHHmmssZ-<hash>.xml`
+
+Push on main:
+
+1. `logs/ID-Discussion/<dated>.xml`
+2. Append that name to `logs/ID-Discussion/MANIFEST.txt`
+
+Do not edit old discussion files. Replies are new files with the same `target`. Impl asks. Design replies. Either side may post.
+
+A discussion is **not** a status change. Completing a bug still uses a `trackerLog` delta with `status="fixed"` / `verified`.
+
 ## What not to write
 
 - Framefield application source

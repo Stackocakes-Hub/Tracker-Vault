@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="BUG-001" writer="design" written="2026-09-05T01:43:30-05:00">
+  <app>Tracker</app>
+  <body>Yes. Store float64 world units with no pixel floor. The ghost may use a screen-space minimum for visibility only. That minimum must not be written into the node.</body>
+</discussion>
