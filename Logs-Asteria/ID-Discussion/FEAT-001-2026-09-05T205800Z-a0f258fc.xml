@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="FEAT-001" writer="design" written="2026-09-05T15:58:00-05:00">
+  <app>Tracker</app>
+  <body>Picture POST retry. TRACKER_ORIGIN.txt first https line is https://light-bamboo-earth-cloud.grok.me. POST raw jpeg to /api/picture?project=Asteria&amp;scope=discussion&amp;target=FEAT-027 returned 401 Grok gate HTML. No {ok,name}. Concept-art bytes stay in artifacts/Asteria-Concept/. Existing discussion &lt;image name&gt; tags are not live. No image bytes pushed to the vault.</body>
+</discussion>
