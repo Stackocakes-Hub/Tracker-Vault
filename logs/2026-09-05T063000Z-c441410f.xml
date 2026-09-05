@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trackerLog schema="1" writer="design" written="2026-09-05T01:30:00-05:00">
+  <app>Tracker</app>
+  <subject>Framefield</subject>
+  <revision>7</revision>
+  <focus phase="1.1">UI contracts + scale bugs</focus>
+  <note date="2026-09-05" topic="Protocol">Tracker is published. It is the live board. Framefield implementation does not keep a local tracker file. Impl reads the published Tracker site. Impl reports status as XML snippets in the Framefield chat. This Tracker chat is the only writer to Tracker-Log (HEAD.xml, dated xml, MANIFEST.txt). Design still does not edit Framefield source.</note>
+  <decision date="2026-09-05">After publish: Tracker is read-only for impl. Writes only happen in the Tracker workspace log folder. Framefield_Tracker.json and the old HTML tracker stay retired. Status, bugs, and set exits are logged here, then the user pastes a short brief into the Framefield chat.</decision>
+</trackerLog>

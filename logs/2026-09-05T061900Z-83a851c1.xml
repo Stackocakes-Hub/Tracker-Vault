@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trackerLog schema="1" writer="design" written="2026-09-05T01:19:00-05:00">
+  <app>Tracker</app>
+  <subject>Framefield</subject>
+  <revision>6</revision>
+  <note date="2026-09-05" topic="Tracker">Poll probe: revision 6 means live reload is working.</note>
+</trackerLog>

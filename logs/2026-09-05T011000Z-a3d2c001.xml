@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trackerLog schema="1" writer="design" written="2026-09-05T01:10:00-05:00">
+  <app>Tracker</app>
+  <subject>Framefield</subject>
+  <revision>3</revision>
+  <focus phase="1.1">UI contracts + scale bugs</focus>
+  <nextIds bug="3" feat="21" comp="10"/>
+  <bug id="BUG-001" filed="2026-09-05" phase="1" severity="high" status="open">
+    <title>Draw preview size does not match committed object when zoomed in</title>
+    <repro>Zoom in. Draw. Watch ghost. Release.</repro>
+    <expected>Committed geometry matches the live stroke in world units at any camera scale.</expected>
+    <actual>Ghost is correct. On pointer-up the object is the wrong size and/or appears on the wrong stack.</actual>
+    <notes>Two coordinate paths: preview uses camera, commit stores screen deltas. One screenToWorld for ghost and node.create. Stroke in world units. COMP-008. Related to BUG-002.</notes>
+  </bug>
+  <bug id="BUG-002" filed="2026-09-05" phase="1" severity="high" status="open">
+    <title>Shapes tool still draws at the wrong scale for a very small square</title>
+    <repro>Zoom in. Shapes tool. Drag a very small square. Compare ghost to committed shape.</repro>
+    <expected>The committed square matches the ghost in world units, including tiny sizes.</expected>
+    <actual>Small square commits at the wrong scale (too large or too small vs the preview).</actual>
+    <notes>Same family as BUG-001, shapes path, small-size edge. Suspect min size in screen pixels applied as world units, integer rounding of world coords, or a coarse snap grid. Do not clamp width/height in CSS pixels. Store float64 world size. Verify at default zoom and deep zoom. COMP-008, COMP-009.</notes>
+  </bug>
+  <feature id="FEAT-001" phase="1.0" size="L" status="specified">
+    <title>Single-editor square canvas, Y-up, origin center</title>
+    <notes>Bounds ±1e8. SET-1.0</notes>
+  </feature>
+  <feature id="FEAT-002" phase="1.0" size="S" status="specified">
+    <title>Default zoom 3/5 inward on a log scale</title>
+    <notes>Users zoom out as they draw</notes>
+  </feature>
+  <feature id="FEAT-003" phase="1.0" size="M" status="specified">
+    <title>Tools V H F P S T A M C; G mounted disabled</title>
+    <notes>1.1 tool ids</notes>
+  </feature>
+  <feature id="FEAT-004" phase="1.3" size="L" status="specified">
+    <title>Import + object management</title>
+    <notes>SVG/DXF first; DWG via converter</notes>
+  </feature>
+  <feature id="FEAT-005" phase="1.0" size="M" status="specified">
+    <title>Export PDF, PNG, JSON</title>
+    <notes></notes>
+  </feature>
+  <feature id="FEAT-006" phase="1.0" size="M" status="specified">
+    <title>Save on major action + 60s checkpoint</title>
+    <notes>Log kept for Phase 5</notes>
+  </feature>
+  <feature id="FEAT-007" phase="1.1" size="M" status="in-progress">
+    <title>Named chrome regions, tokens, data-ui / data-flag</title>
+    <notes>Impl thread</notes>
+  </feature>
+  <feature id="FEAT-008" phase="1.1" size="S" status="in-progress">
+    <title>Hidden docks: Grok, presence, layers, style</title>
+    <notes>Mount, do not omit</notes>
+  </feature>
+  <feature id="FEAT-009" phase="1.1" size="S" status="specified">
+    <title>Frozen operation type strings + schemaVersion</title>
+    <notes></notes>
+  </feature>
+  <feature id="FEAT-020" phase="1.1" size="M" status="in-progress">
+    <title>Professional inspector: selection acknowledged, empty property slots</title>
+    <notes>Do not populate values yet. SET-1.1</notes>
+  </feature>
+  <feature id="FEAT-010" phase="1.5" size="L" status="specified">
+    <title>Nested spaces, no max zoom, checkerboard debug ground</title>
+    <notes>Blocked until BUG-001 and BUG-002 are fixed</notes>
+  </feature>
+  <feature id="FEAT-011" phase="1.5" size="M" status="specified">
+    <title>Dev panel and flags</title>
+    <notes>DEV_MODE on through Phase 2</notes>
+  </feature>
+  <feature id="FEAT-012" phase="2.0c" size="L" status="specified">
+    <title>Grok tools + Imagine + ghosts</title>
+    <notes>User edits win. After 1.2 and 1.6</notes>
+  </feature>
+  <feature id="FEAT-013" phase="2.0a" size="M" status="specified">
+    <title>Presence overlay, toggle, transparency</title>
+    <notes>Not a user layer. Others do not write</notes>
+  </feature>
+  <feature id="FEAT-014" phase="1.6" size="M" status="specified">
+    <title>Layer panel hide/lock/reorder/opacity</title>
+    <notes>Does not move x,y. Before Grok</notes>
+  </feature>
+  <feature id="FEAT-015" phase="5" size="L" status="planned">
+    <title>Multi-writer</title>
+    <notes>After 2.0</notes>
+  </feature>
+  <feature id="FEAT-016" phase="3" size="L" status="planned">
+    <title>Scripts, animatic, share links</title>
+    <notes>After 2.0</notes>
+  </feature>
+  <feature id="FEAT-017" phase="4" size="M" status="planned">
+    <title>Optional OpenAI planner, stamps</title>
+    <notes>After 2.0</notes>
+  </feature>
+  <feature id="FEAT-018" phase="1" size="S" status="parked">
+    <title>Light theme token map</title>
+    <notes>Dark ships first</notes>
+  </feature>
+  <feature id="FEAT-019" phase="—" size="L" status="parked">
+    <title>Mobile-first layout</title>
+    <notes>Desktop first</notes>
+  </feature>
+  <set id="SET-1.0" phase="1.0" status="in-progress" order="1">
+    <title>Field core</title>
+    <intent>One editor boards a short sequence on a single square.</intent>
+    <exit>Draw at default zoom, reload, export. Geometry survives.</exit>
+    <gate>BUG-001</gate>
+    <gate>BUG-002</gate>
+    <include>Square world, origin center, Y-up</include>
+    <include>Default zoom 3/5 in (log)</include>
+    <include>Select, hand, frame, pen, shape, text, arrow</include>
+    <include>One sequence rail, layer default in data</include>
+    <include>Save major action + 60s</include>
+    <include>Export PDF/PNG/JSON</include>
+  </set>
+  <set id="SET-1.1" phase="1.1" status="in-progress" order="2">
+    <title>Chrome and contracts</title>
+    <intent>The shell will not be renamed at 2.0.</intent>
+    <exit>Select a frame. Inspector says it is selected. Hidden docks exist. Flags flip without a layout rewrite.</exit>
+    <include>Named regions, tokens, data-ui / data-flag / data-node</include>
+    <include>Docks for Grok, presence, layers, style mounted and hidden</include>
+    <include>Dev mode on; flag panel with descriptions</include>
+    <include>FEAT-020 inspector shell, empty property rows</include>
+  </set>
+  <set id="SET-1.2" phase="1.2" status="planned" order="3">
+    <title>Selection, transform, professional inspector values</title>
+    <intent>The user can change what they drew, in world units, at any zoom.</intent>
+    <exit>Zoom in, draw, select, nudge in the inspector, undo. Field matches numbers.</exit>
+    <gate>BUG-001</gate>
+    <gate>BUG-002</gate>
+    <gate>SET-1.1</gate>
+    <include>Move/resize/rotate handles; commit on pointer-up</include>
+    <include>Inspector values: type, name, x, y, rotation, scale, lock, hide, layerId read-only default, order read-only</include>
+    <include>Snap to frame edges/centers</include>
+    <include>Undo/redo for create, delete, transform, props</include>
+  </set>
+  <set id="SET-1.3" phase="1.3" status="planned" order="4">
+    <title>Bring work in</title>
+    <intent>Planning does not start from a blank field.</intent>
+    <exit>Drop SVG or DXF, crop, place in a frame, export. Y-up flipped only at screen.</exit>
+    <gate>SET-1.2</gate>
+    <include>Images, SVG, DXF</include>
+    <include>DWG stub or converter — do not block on DWG license</include>
+    <include>Import mapping + object management</include>
+    <include>Assets drawer</include>
+  </set>
+  <set id="SET-1.4" phase="1.4" status="planned" order="5">
+    <title>Navigation and board literacy</title>
+    <intent>A larger board stays findable without nested spaces yet.</intent>
+    <exit>A twelve-frame row can be flown, fitted, and found from the rail and palette.</exit>
+    <gate>SET-1.0</gate>
+    <include>Fit selection / sequence / home</include>
+    <include>Command palette; later verbs registered and disabled</include>
+    <include>Breadcrumb Project / Sequence / Space=root</include>
+    <include>First-run: blank / import / Ask Grok disabled</include>
+  </set>
+  <set id="SET-1.5" phase="1.5" status="planned" order="6">
+    <title>Nested spaces, no max zoom</title>
+    <intent>Unbounded zoom without a single global scale.</intent>
+    <exit>Draw in a child, zoom out, return via origin mark. Parent objects did not move.</exit>
+    <gate>BUG-001</gate>
+    <gate>BUG-002</gate>
+    <gate>SET-1.2</gate>
+    <include>Spawn child at Sin</include>
+    <include>Enter parent or insert parent at Sout</include>
+    <include>Hysteresis; checkerboard + origin while flags on</include>
+    <include>Portal mark saved</include>
+    <include>Dev panel: space, camera, ulp; product-to-root display only</include>
+  </set>
+  <set id="SET-1.6" phase="1.6" status="planned" order="7">
+    <title>Layer data and panel (pre-Grok)</title>
+    <intent>Stacking is editable before a model writes objects.</intent>
+    <exit>Two layers, hide one, move a frame. Camera unchanged. Draw still matches ghost.</exit>
+    <gate>SET-1.2</gate>
+    <include>Create, rename, hide, lock, reorder, opacity</include>
+    <include>Move selection between layers changes layerId+order only</include>
+    <include>System bands reserved: guides, ghosts, comments, presence</include>
+    <include>LAYERS_UI on</include>
+  </set>
+  <set id="SET-2.0a" phase="2.0a" status="planned" order="8">
+    <title>Presence</title>
+    <intent>See others without letting them write.</intent>
+    <exit>A second signed-in viewer can be seen and dimmed.</exit>
+    <gate>SET-1.6</gate>
+    <include>Names, cursors, viewports</include>
+    <include>Toggle and transparency</include>
+    <include>Overlay, not a user layer</include>
+  </set>
+  <set id="SET-2.0b" phase="2.0b" status="planned" order="9">
+    <title>Style card</title>
+    <intent>Project style exists before the model uses it.</intent>
+    <exit>A frame knows its aspect and pins without calling a model.</exit>
+    <gate>SET-1.1</gate>
+    <include>Aspect default</include>
+    <include>Pinned refs ≤5</include>
+    <include>Inspector style tab on</include>
+  </set>
+  <set id="SET-2.0c" phase="2.0c" status="planned" order="10">
+    <title>Grok draws</title>
+    <intent>A paragraph becomes an editable sequence of frames.</intent>
+    <exit>Labeled sequence of frames the user can still edit.</exit>
+    <gate>SET-1.2</gate>
+    <gate>SET-1.6</gate>
+    <gate>SET-2.0b</gate>
+    <gate>BUG-001</gate>
+    <gate>BUG-002</gate>
+    <include>Tool router</include>
+    <include>Imagine generate/edit</include>
+    <include>Ghosts, accept/reject</include>
+    <include>Generation queue</include>
+    <include>GROK_TOOLS on</include>
+    <include>User edits always win</include>
+  </set>
+  <compat id="COMP-001" status="watch">
+    <risk>Document order used to paint chrome</risk>
+    <watch>Keep --ui-z-* separate</watch>
+  </compat>
+  <compat id="COMP-002" status="watch">
+    <risk>Sequence index reused as node.order</risk>
+    <watch>Shot order on sequences[].frameIds</watch>
+  </compat>
+  <compat id="COMP-003" status="watch">
+    <risk>Hidden docks omitted from the tree</risk>
+    <watch>Mount and hide</watch>
+  </compat>
+  <compat id="COMP-004" status="watch">
+    <risk>Y flipped twice on DXF/DWG</risk>
+    <watch>World Y-up; flip only at screen</watch>
+  </compat>
+  <compat id="COMP-005" status="watch">
+    <risk>Global zoom product as live camera</risk>
+    <watch>Display-only in the dev panel</watch>
+  </compat>
+  <compat id="COMP-006" status="watch">
+    <risk>Lowered precision on space links</risk>
+    <watch>float64 on origins and scaleToParent</watch>
+  </compat>
+  <compat id="COMP-007" status="watch">
+    <risk>GPU depth as stacking truth</risk>
+    <watch>layerId + order only</watch>
+  </compat>
+  <compat id="COMP-008" status="open">
+    <risk>Draw ghost in screen space, commit in world space</risk>
+    <watch>Same screenToWorld for preview and node.create (BUG-001, BUG-002)</watch>
+  </compat>
+  <compat id="COMP-009" status="open">
+    <risk>Min size or snap in CSS pixels applied as world units</risk>
+    <watch>Tiny shapes: no pixel floor on width/height; float64 world size (BUG-002)</watch>
+  </compat>
+  <decision date="2026-09-04">Implementation is a separate thread. This chat is features and bugs.</decision>
+  <decision date="2026-09-04">Functionality first. Multi-writer is Phase 5.</decision>
+  <decision date="2026-09-04">Centered square world, 3/5 default zoom, Y-up. Negative coordinates allowed.</decision>
+  <decision date="2026-09-04">DXF first-class. DWG through a licensed converter.</decision>
+  <decision date="2026-09-04">Phase 1.5 nested spaces. Do not lower link precision (float64).</decision>
+  <decision date="2026-09-04">Phase 2 presence is an overlay with toggle and transparency.</decision>
+  <decision date="2026-09-04">Stacking is layerId + order, not a GPU depth buffer. Compatible with Phase 2 layers.</decision>
+  <decision date="2026-09-04">Dev mode on by default through Phase 2. Flags visible with descriptions. Checkerboard debug ground for new spaces.</decision>
+  <decision date="2026-09-05">Build phase-by-phase. Do not ask one chat for 1.5 + Grok + DXF in the first reply.</decision>
+  <decision date="2026-09-05">Phase 1.1 freezes chrome names, tokens, reserved docks, operation type strings.</decision>
+  <decision date="2026-09-05">This chat does not modify application source. Tracker files only.</decision>
+  <decision date="2026-09-05">Grok owns the tracker. No intake paste required.</decision>
+  <decision date="2026-09-05">Inspector in professional mode acknowledges selection with empty property slots (FEAT-020).</decision>
+  <decision date="2026-09-05">Shared log is Framefield_Tracker.json. HTML is the view. Impl and design both write the JSON.</decision>
+  <decision date="2026-09-05">Do not start SET-1.5 while transform/commit still uses screen space.</decision>
+  <decision date="2026-09-05">Do not turn on SET-2.0c (Grok) if SET-1.2 and SET-1.6 are incomplete.</decision>
+  <decision date="2026-09-05">Layers (SET-1.6) ship before Grok so ghosts land on a real layer.</decision>
+  <decision date="2026-09-05">Work order: BUG-001/002 → SET-1.1 + FEAT-020 → SET-1.2 → 1.3 → 1.4 → 1.5 → 1.6 → 2.0a → 2.0b → 2.0c.</decision>
+  <decision date="2026-09-05">After 2.0: Phase 3 scripts/animatic/share, Phase 4 optional second model + stamps, Phase 5 multi-writer.</decision>
+  <decision date="2026-09-05">commitPlan20 is true. Feature sets through 2.0 are on the tracker.</decision>
+  <note date="2026-09-04" topic="Product">Web vector storyboard canvas. Grok draws and the user edits. Infinite (then nested-true-infinite) field. Import/export. Optional ChatGPT later. Server storage later.</note>
+  <note date="2026-09-04" topic="Import">Imported objects need management: role, replace, detach, relink, crop, versions — not a one-shot drop.</note>
+  <note date="2026-09-04" topic="Save">Checkpoint every 60s if dirty, and on every major action. Live drags and camera are not saves. Shape kept for later multi-writer.</note>
+  <note date="2026-09-04" topic="Collab">Live multi-writer deferred. Functionality first. Presence (see others) is Phase 2; writing together is Phase 5.</note>
+  <note date="2026-09-04" topic="CAD files">DXF native. DWG only via licensed server conversion. Other vectors (SVG) in Phase 1. Y-up: flip once at screen, never twice on import.</note>
+  <note date="2026-09-04" topic="Camera">Start 3/5 inward on a log scale because users zoom out as they draw. Perfect square world. Origin at center so negative coords exist. Maximize 64-bit usage inside ±1e8 in Phase 1.</note>
+  <note date="2026-09-04" topic="Stacking vs depth">Document truth is layerId + sparse order. GPU depth is not stacking. UI chrome uses --ui-z-* bands. Presence is not a user layer. Phase 2 layer UI must not rewrite the Phase 1 schema.</note>
+  <note date="2026-09-04" topic="Spaces">Phase 1.5: no max zoom. Cross Sin → child space at focus, new origin, nest+1, checkerboard while debugging. Cross Sout → parent, or insert a parent at root. Objects stay in the space where created. Portal mark at child origin.</note>
+  <note date="2026-09-04" topic="Precision">Do not lower precision on space links. float64 for origins, scaleToParent, camera rewrite. Never float16. Never one global float32 zoom. Product-to-root is display-only in the dev panel.</note>
+  <note date="2026-09-04" topic="Dev mode">On by default through Phase 2. Side panel: space, camera, precision (ulp, max |coord|, distance to spawn), stack, flags with one-line descriptions, editable.</note>
+  <note date="2026-09-05" topic="How to build">No sales handoff. Same model, new or same thread. One phase per prompt. Use Framefield_Build_Brief.md. Start Phase 1 only.</note>
+  <note date="2026-09-05" topic="1.1 contracts">Region ids, tokens, tool ids, reserved inspector tabs and docks (mounted hidden), operation type strings, reserved project fields (styleCard, pinnedAssetIds, schemaVersion). Hide, do not delete.</note>
+  <note date="2026-09-05" topic="This chat">Discussion and bugs only. Do not modify application source here. Tracker files are the only writes.</note>
+  <note date="2026-09-05" topic="Tracker">Canonical file artifacts/Framefield_Tracker.json. HTML polls it. Impl sets status; design files bugs and plans. Both bump revision.</note>
+  <note date="2026-09-05" topic="BUG-001">Draw tool ghost correct when zoomed; committed object wrong size and/or wrong stack. Fix: one screenToWorld for preview and node.create.</note>
+  <note date="2026-09-05" topic="FEAT-020">Professional mode: selecting an object shows inspector and empty property slots. Do not populate values in 1.1. Acknowledge selection.</note>
+  <note date="2026-09-05" topic="Roadmap">Sets 1.0 → 1.1 → 1.2 → 1.3 → 1.4 → 1.5 → 1.6 → 2.0a presence → 2.0b style → 2.0c Grok. BUG-001 and BUG-002 are gates on 1.0, 1.2, 1.5, and 2.0c.</note>
+  <note date="2026-09-05" topic="BUG-002">Shapes tool, very small square, still wrong scale vs ghost. Treat as small-size edge of the same world/screen bug; also check pixel min-size and integer rounding.</note>
+</trackerLog>

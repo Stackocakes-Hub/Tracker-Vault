@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trackerLog schema="1" writer="design" written="2026-09-05T01:16:00-05:00">
+  <app>Tracker</app>
+  <subject>Framefield</subject>
+  <revision>5</revision>
+  <focus phase="1.1">UI contracts + scale bugs</focus>
+  <note date="2026-09-05" topic="Roadmap">Committed feature sets through 2.0. Order: 1.0 Field core, 1.1 Chrome, 1.2 Transform/inspector values, 1.3 Import, 1.4 Navigation, 1.5 Nested spaces, 1.6 Layers, 2.0a Presence, 2.0b Style card, 2.0c Grok draws. Do not start the next set until the previous exit is true. BUG-001 and BUG-002 gate 1.0, 1.2, 1.5, and 2.0c.</note>
+  <decision date="2026-09-05">Feature sets SET-1.0 through SET-2.0c are the logged plan leading up to 2.0. Phases 3, 4, and 5 stay after 2.0.</decision>
+
+  <set id="SET-1.0" phase="1.0" status="in-progress" order="1">
+    <title>Field core</title>
+    <intent>One editor boards a short sequence on a single square.</intent>
+    <exit>Draw at default zoom, reload, export. Geometry survives.</exit>
+    <gate>BUG-001</gate>
+    <gate>BUG-002</gate>
+    <include>Square world, origin center, Y-up</include>
+    <include>Default zoom 3/5 in (log)</include>
+    <include>Select, hand, frame, pen, shape, text, arrow</include>
+    <include>One sequence rail, layer default in data</include>
+    <include>Save major action + 60s</include>
+    <include>Export PDF/PNG/JSON</include>
+  </set>
+  <set id="SET-1.1" phase="1.1" status="in-progress" order="2">
+    <title>Chrome and contracts</title>
+    <intent>The shell will not be renamed at 2.0.</intent>
+    <exit>Select a frame. Inspector says it is selected. Hidden docks exist. Flags flip without a layout rewrite.</exit>
+    <include>Named regions, tokens, data-ui / data-flag / data-node</include>
+    <include>Docks for Grok, presence, layers, style mounted and hidden</include>
+    <include>Dev mode on; flag panel with descriptions</include>
+    <include>FEAT-020 inspector shell, empty property rows</include>
+  </set>
+  <set id="SET-1.2" phase="1.2" status="planned" order="3">
+    <title>Selection, transform, professional inspector values</title>
+    <intent>The user can change what they drew, in world units, at any zoom.</intent>
+    <exit>Zoom in, draw, select, nudge in the inspector, undo. Field matches numbers.</exit>
+    <gate>BUG-001</gate>
+    <gate>BUG-002</gate>
+    <gate>SET-1.1</gate>
+    <include>Move/resize/rotate handles; commit on pointer-up</include>
+    <include>Inspector values: type, name, x, y, rotation, scale, lock, hide, layerId read-only default, order read-only</include>
+    <include>Snap to frame edges/centers</include>
+    <include>Undo/redo for create, delete, transform, props</include>
+  </set>
+  <set id="SET-1.3" phase="1.3" status="planned" order="4">
+    <title>Bring work in</title>
+    <intent>Planning does not start from a blank field.</intent>
+    <exit>Drop SVG or DXF, crop, place in a frame, export. Y-up flipped only at screen.</exit>
+    <gate>SET-1.2</gate>
+    <include>Images, SVG, DXF</include>
+    <include>DWG stub or converter — do not block on DWG license</include>
+    <include>Import mapping + object management</include>
+    <include>Assets drawer</include>
+  </set>
+  <set id="SET-1.4" phase="1.4" status="planned" order="5">
+    <title>Navigation and board literacy</title>
+    <intent>A larger board stays findable without nested spaces yet.</intent>
+    <exit>A twelve-frame row can be flown, fitted, and found from the rail and palette.</exit>
+    <gate>SET-1.0</gate>
+    <include>Fit selection / sequence / home</include>
+    <include>Command palette; later verbs registered and disabled</include>
+    <include>Breadcrumb Project / Sequence / Space=root</include>
+    <include>First-run: blank / import / Ask Grok disabled</include>
+  </set>
+  <set id="SET-1.5" phase="1.5" status="planned" order="6">
+    <title>Nested spaces, no max zoom</title>
+    <intent>Unbounded zoom without a single global scale.</intent>
+    <exit>Draw in a child, zoom out, return via origin mark. Parent objects did not move.</exit>
+    <gate>BUG-001</gate>
+    <gate>BUG-002</gate>
+    <gate>SET-1.2</gate>
+    <include>Spawn child at Sin</include>
+    <include>Enter parent or insert parent at Sout</include>
+    <include>Hysteresis; checkerboard + origin while flags on</include>
+    <include>Portal mark saved</include>
+    <include>Dev panel: space, camera, ulp; product-to-root display only</include>
+  </set>
+  <set id="SET-1.6" phase="1.6" status="planned" order="7">
+    <title>Layer data and panel (pre-Grok)</title>
+    <intent>Stacking is editable before a model writes objects.</intent>
+    <exit>Two layers, hide one, move a frame. Camera unchanged. Draw still matches ghost.</exit>
+    <gate>SET-1.2</gate>
+    <include>Create, rename, hide, lock, reorder, opacity</include>
+    <include>Move selection between layers changes layerId+order only</include>
+    <include>System bands reserved: guides, ghosts, comments, presence</include>
+    <include>LAYERS_UI on</include>
+  </set>
+  <set id="SET-2.0a" phase="2.0a" status="planned" order="8">
+    <title>Presence</title>
+    <intent>See others without letting them write.</intent>
+    <exit>A second signed-in viewer can be seen and dimmed.</exit>
+    <gate>SET-1.6</gate>
+    <include>Names, cursors, viewports</include>
+    <include>Toggle and transparency</include>
+    <include>Overlay, not a user layer</include>
+  </set>
+  <set id="SET-2.0b" phase="2.0b" status="planned" order="9">
+    <title>Style card</title>
+    <intent>Project style exists before the model uses it.</intent>
+    <exit>A frame knows its aspect and pins without calling a model.</exit>
+    <gate>SET-1.1</gate>
+    <include>Aspect default</include>
+    <include>Pinned refs no more than 5</include>
+    <include>Inspector style tab on</include>
+  </set>
+  <set id="SET-2.0c" phase="2.0c" status="planned" order="10">
+    <title>Grok draws</title>
+    <intent>A paragraph becomes an editable sequence of frames.</intent>
+    <exit>Labeled sequence of frames the user can still edit.</exit>
+    <gate>SET-1.2</gate>
+    <gate>SET-1.6</gate>
+    <gate>SET-2.0b</gate>
+    <gate>BUG-001</gate>
+    <gate>BUG-002</gate>
+    <include>Tool router</include>
+    <include>Imagine generate/edit</include>
+    <include>Ghosts, accept/reject</include>
+    <include>Generation queue</include>
+    <include>GROK_TOOLS on</include>
+    <include>User edits always win</include>
+  </set>
+</trackerLog>
