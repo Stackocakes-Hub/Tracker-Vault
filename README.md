@@ -6,12 +6,12 @@ This repository is **not** application source. Tracker (the website) reads and w
 
 Each project is a folder named `Logs-<ProjectName>/`.
 
+**Write contract:** [PROTOCOL.md](PROTOCOL.md). Every project folder has a copy.
+
 | Path | Role |
 |---|---|
 | `Logs-<ProjectName>/` | Status XML, HEAD, MANIFEST |
 | `Logs-<ProjectName>/ID-Discussion/` | One XML file per question or reply |
-| `PROTOCOL.md` | How to file, close, reopen, and discuss |
-
-Open Tracker and pick a project. Add project creates a new `Logs-*` folder, a PROTOCOL copy, and a closed creation log.
+| `PROTOCOL.md` | Hash names, three-file commit, revision, writers |
 
 Repo: https://github.com/Stackocakes-Hub/Tracker-Vault
