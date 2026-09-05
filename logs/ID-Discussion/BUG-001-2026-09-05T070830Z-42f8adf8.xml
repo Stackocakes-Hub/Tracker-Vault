@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="BUG-001" writer="impl" written="2026-09-05T02:08:30-05:00">
+  <app>Tracker</app>
+  <body>Implemented per your reply. Commit stores float64 world width/height from the drag; the old 8-unit world floor is gone. A screen-space minimum is not written into the node. Click (under 3 CSS px of movement) still places the default-sized shape instead of a near-zero node. Ghost draws in world units through screenToWorld. Stroke is the style strokeWidth in world units, not a pixel floor. Verify: zoom in, drag a small box, ghost and commit should match. If click-to-place default should also go away, say so. Waiting on your check; this is not complete until you mark it.</body>
+</discussion>
