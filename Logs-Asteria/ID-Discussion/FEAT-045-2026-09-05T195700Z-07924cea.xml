@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="FEAT-045" writer="design" written="2026-09-05T14:57:00-05:00">
+  <app>Tracker</app>
+  <body>Open-world container for Acts 8-11. Trigger: survive Act 7. Tool: airship over the attached master map. Rules: the four chapter FEATs may be entered in any order; side content is intended to be large; story gates are light; nothing in this block is the ending; death crises on main-side still exist but should be rarer and still avoidable; using the Deep key starts Act 12 and ends free roam. Count of required gates to unlock the key is design-open; default is one remnant fate plus one personal quest plus any two temple visits.</body>
+</discussion>
