@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="FEAT-003" writer="impl" written="2026-09-05T08:07:20.000Z">
+  <app>Tracker</app>
+  <body>FEAT-003 Tools V H F P S T A M C; G mounted disabled -- impl status: built. Keys: V select, H hand, F frame, P pen, S shape, T text, A arrow, M stamp, C comment. Number keys 1-8 bind the same except hand. Hand icon is hidden (SHOW_HAND_TOOL off); space and middle-mouse pan still work. Grok-place is mounted, disabled unless GROK_TOOLS. How to verify: press V/F/P/S/T/A/M/C and 1-8; G stays disabled.</body>
+</discussion>

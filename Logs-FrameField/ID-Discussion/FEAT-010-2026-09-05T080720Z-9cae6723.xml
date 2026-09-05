@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="FEAT-010" writer="impl" written="2026-09-05T08:07:20.000Z">
+  <app>Tracker</app>
+  <body>FEAT-010 Nested spaces, no max zoom, checkerboard debug ground -- impl status: built, with BUG-003. Spawn child at 1024x home at camera focus (or re-enter a nearby portal). Zoom out 1/1024x exits to parent, or inserts a parent if this is root. Hysteresis. Checkerboard and origin while flags on. Portal saved. Product-to-root is display-only. Objects stay in the space they were created. How to verify: zoom in until nest increments, draw in the child, zoom out, parent objects did not move. Filed BUG-003 (undo after spawn resets camera).</body>
+</discussion>

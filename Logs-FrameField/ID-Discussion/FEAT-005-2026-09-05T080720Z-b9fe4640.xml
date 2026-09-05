@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="FEAT-005" writer="impl" written="2026-09-05T08:07:20.000Z">
+  <app>Tracker</app>
+  <body>FEAT-005 Export PDF, PNG, JSON -- impl status: built. Export modal writes current-space PNG, PDF, and project JSON. How to verify: draw, export all three, open the files; geometry is in the JSON.</body>
+</discussion>
