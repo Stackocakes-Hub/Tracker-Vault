@@ -1,13 +1,17 @@
 # Tracker-Vault
 
-Shared XML log vault for **Tracker** (the log website) and **Framefield** (the canvas app).
+Shared XML log vault for multiple software projects.
 
-This is not Framefield source.
+This repository is **not** application source. Tracker (the website) reads and writes it.
 
-**Read [PROTOCOL.md](PROTOCOL.md) before writing.**
+Each project is a folder named `Logs-<ProjectName>/`.
 
-- Logs: [`logs/`](logs/)
-- Newest delta: [`logs/HEAD.xml`](logs/HEAD.xml)
-- File list: [`logs/MANIFEST.txt`](logs/MANIFEST.txt)
+| Path | Role |
+|---|---|
+| `Logs-<ProjectName>/` | Status XML, HEAD, MANIFEST |
+| `Logs-<ProjectName>/ID-Discussion/` | One XML file per question or reply |
+| `PROTOCOL.md` | How to file, close, reopen, and discuss |
+
+Open Tracker and pick a project. Add project creates a new `Logs-*` folder, a PROTOCOL copy, and a closed creation log.
 
 Repo: https://github.com/Stackocakes-Hub/Tracker-Vault
