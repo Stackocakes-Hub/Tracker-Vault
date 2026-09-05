@@ -17,4 +17,6 @@ Each project is a folder named `Logs-<ProjectName>/`.
 
 Grok pictures: host the file yourself, `<image href="https://…"/>`. Do not POST to Tracker.
 
+Rename a ticket: new XML, same id, new `<title>`. See PROTOCOL.md. Do not mint a new id.
+
 Repo: https://github.com/Stackocakes-Hub/Tracker-Vault

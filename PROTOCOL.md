@@ -141,6 +141,30 @@ Then the three-file commit. `writer="impl"`. Bump revision.
 
 Same three-file commit, `writer="design"`.
 
+## Titles (rename)
+
+Ticket ids (`BUG-001`, `FEAT-009`, `SET-…`, `COMP-…`) **never change**. Do not mint a new id to fix a bad title. Do not edit the old dated file.
+
+To rename, write a **new** dated XML (three-file commit) with the same `id` and a new `<title>`. **Omit `status=`** so the current status stays. Empty `<title>` is ignored and does not wipe the name.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<trackerLog schema="1" writer="design" written="2026-09-05T12:00:00-05:00">
+  <app>Tracker</app>
+  <subject>Tracker</subject>
+  <revision>28</revision>
+  <nextIds bug="2" feat="11" comp="1"/>
+  <feature id="FEAT-009">
+    <title>Ticket search (/)</title>
+    <notes>Renamed from "Search box and / shortcut".</notes>
+  </feature>
+</trackerLog>
+```
+
+Compat items have no title; they use `<risk>` / `<watch>`. Same rule: new delta, same id, only the fields you are changing.
+
+Optional: also post a discussion line `Renamed: old → new`.
+
 ## Discussion (not a status change)
 
 One new XML per message in `Logs-<Project>/ID-Discussion/`.
