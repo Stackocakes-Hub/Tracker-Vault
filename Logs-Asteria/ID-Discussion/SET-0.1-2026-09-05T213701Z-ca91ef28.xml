@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="SET-0.1" writer="design" written="2026-09-05T16:37:01-05:00">
+  <app>Tracker</app>
+  <body>Developmental path only. No status change. No new ids. Does not reopen SET-2.0 (closed rev 3) and does not patch FEAT-006.
+
+Question: best path to build a rich Asteria given Grok-made assets, plus locks for graphics, audio, combat genre, and hour targets.
+
+Recommended production path
+1. Keep story lock as-is (thirteen acts, Act 7 cataclysm FEAT-020, ending Act 13 FEAT-044 / FEAT-037). Do not board FEAT-009 until presentation and combat are accepted.
+2. Vertical slice before content scale: Act 0 Padon / WillowDale (FEAT-013) plus the Act 1 road into Iron's Gate (FEAT-014). One town, one field biome, one hunter pack, one ATB fight, two portraits (Cael, Liraen), one region bed + one battle stack. That slice proves the pipeline. Impl is another thread.
+3. Then rails Acts 2-7 (one temple and one join per act). Open-world kit (airship hub, side boards, sigil rebound) only after Act 7 exists as a playable cataclysm. Acts 8-11 are content, not a second engine.
+4. Style bible (this set) stays the art lock. Systems details stay on FEAT-006, FEAT-007, FEAT-008. SET-2.0 can be reopened later if the user wants the systems container live again.
+
+Graphics — recommend 2.5D, not realtime 3D, not pixel-pure 2D
+SET-0.1 already: FF9 high-fantasy tone, FF8 character design (realistic proportions, ornate clothes), FF7 industry-vs-land contrast.
+- 2.5D here means painted or pre-rendered scene plates + 2D walk/battle sprites + portrait busts. Camera is 3/4 overworld and side-or-3/4 battle stage. HD-2D-adjacent, not a Unity 3D action game.
+- Why this and not 3D: roster is two mains plus eight main-side plus Velith, Vortan, Nyxara plus civic NPCs. A Grok-buildable 3D character/animation/lighting pipeline at that count will stall the story. 3D also fights the FF8 fashion brief unless a full cloth sim exists, which it will not from this chat.
+- Why not pixel-pure 2D: SET-0.1 asked realistic FF8 proportions and wearable ornament. Pixel can be a fallback slice style, not the target look.
+- What Grok actually mints: portrait sheets, sprite turnarounds, tiles / scene plates, UI frames, temple and Cannon concept plates. Host https, catalog Grok-Host, max 4 images per discussion. No vault binaries.
+- Constium / World Cannon / Maze Fissure read as hard-surface plates; Bengenia / Iunum / temples read as painted plates. Same camera, different material language. That is the FF7 contrast without a 3D city.
+
+Audio — stacked score, not one track per room
+Stack by mixing stems, do not hard-cut whole songs except at act gates and death crises.
+Stems: (a) region bed, (b) temple-aspect color, (c) active-party leitmotif, (d) tension / encounter-gauge, (e) battle intensity, (f) Trance, (g) villain overlay.
+Field uses a+b+c+d. Battle adds e, Trance adds f. Velith/Vortan/Nyxara overlay g when that face is present. After Act 7 the north beds pick up a Fissure drone that does not resolve until Act 13.
+Character themes (proposal, user rewrite wins): Cael = iron-road fifths, march that can seal; Liraen = song-line that owns FEAT-008 song-duel and party memory; Rook = short percussion knives; Brann = gauge/anvil; Seris = veiled choir; Nym = machina meter; Ash = low drums; Ysolde = life-hymn; Halric = brass armor; Maera = meridian bell. Villains: Velith mist-drone, Vortan forge-ostinato, Nyxara hollow-flame that leaks through Fire beds from Act 5 and owns Act 13.
+Grok writes the motif bible and arrangement map. Finished stems are impl / an audio tool, not this vault.
+
+Combat — keep FEAT-006; do not rebase to action or Metroidvania
+FEAT-006 already: FF9-style ATB, short Trance, Temple Sigils as junction-lite on gear, active three from the roster, encounter gauge plus visible field hunters. That is the combat lock unless the user overrules it.
+- Turn-based / ATB: fits three-of-roster tactics, FEAT-038 death contingencies (a dead main-side is a missing job, not a dropped action combo), and Trance as a readable burst.
+- Action style: reject as the primary battle mode. Real-time dodge-and-combo fights the eight main-side kit and the plot-armor pair. Action field traversal can still exist (walk, ferry, rail, airship).
+- Metroidvania: reject as the combat genre and as the Act 0-7 structure. Those acts are rails with civic temples. Metroidvania-lite exploration is already the point of FEAT-040 / FEAT-045 after the cataclysm: cracked Sigils gate side delves and rebound order is free. Do not turn Padon or Iron's Gate into ability-gated rooms.
+
+Game length — proposal only, not a status lock
+Assumes 2.5D ATB, visible hunters, airship after Act 7, optional Acts 8-11.
+- Story only (Acts 0-7 plus 12-13, skip open-world extras): 30 hours.
+- 70 percent (story plus most alive personal quests, four of six temple rebounds, some remnants, light sidelines): 52 hours.
+- 100 percent (all personal quests that still exist after FEAT-038 deaths, six temple rebounds, remnants, song-duel and brass-card finales): 78 hours.
+Act sketch: 0 = 1.5h, 1-2 = 3h each, 3-6 = 4h each, 7 = 4h, 8-11 = about 20h optional among them, 12 = 3h, 13 = 4h. Open-world hours move if personal quests die with their owners.
+Shorter rewrite (22 / 38 / 55) is valid if the vertical slice shows the acts running long. Longer than 90h 100 percent is a trap for a Grok-built pipeline.
+
+Ask
+Accept or rewrite: 2.5D plates+sprites, stacked stems, FEAT-006 ATB stays, hours 30 / 52 / 78. If accepted, a later status delta can mint graphics / audio / length feats off nextIds (HEAD rev 9 has no nextIds tag; last mint was rev 8 feat 46). Not minting them in this discussion.
+</body>
+</discussion>
