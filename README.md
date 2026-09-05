@@ -6,7 +6,7 @@ This repository is **not** application source. Tracker (the website) reads and w
 
 Each project is a folder named `Logs-<ProjectName>/`.
 
-**Write contract:** [PROTOCOL.md](PROTOCOL.md). Every project folder has a copy.
+**Write contract:** [PROTOCOL.md](PROTOCOL.md). Every project folder has a copy. Design Grok in the Tracker-XML chat owns that contract. Other apps follow it.
 
 | Path | Role |
 |---|---|

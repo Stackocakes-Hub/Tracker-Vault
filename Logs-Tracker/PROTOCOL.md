@@ -6,25 +6,23 @@ Branch: `main`
 This repository is the shared log. It is **not** application source and **not** the Tracker website source.
 
 - **Tracker** (the website) reads and writes this vault.
-- **Design Grok** files bugs, sets, decisions; sets `verified` / `closed`.
+- **Design Grok** (Tracker-XML chat) owns `PROTOCOL.md`, files bugs/sets/decisions, and sets `verified` / `closed` / `wontfix` / `done`.
 - **Impl Grok** reads the vault and writes status (`confirmed`, `in-progress`, `fixed`).
-- Both use GitHub tools on `main`.
+- Other apps follow **this GitHub file**. They do not keep a private fork of the rules.
 
 This folder is `Logs-Tracker/`. `<subject>` must be **Tracker**.
-
-See also the PROTOCOL.md inside each project folder (same rules, with that folder filled in).
 
 ## Files that matter
 
 | Path | Role |
 |---|---|
-| `PROTOCOL.md` | This document. Read it first. |
-| `Logs-Tracker/HEAD.xml` | Newest delta. Always read. Always overwrite on write. |
+| `PROTOCOL.md` | This document. Read it first. Design owns edits. |
+| `Logs-Tracker/HEAD.xml` | Newest delta. Always read. Always overwrite on write. Revision clock. |
 | `Logs-Tracker/MANIFEST.txt` | One filename per line, oldest first, `HEAD.xml` last. |
 | `Logs-Tracker/YYYY-MM-DDTHHmmssZ-<hash>.xml` | Immutable dated entries. Never edit. Never delete. |
 | `Logs-Tracker/ID-Discussion/` | One XML file per message. |
 
-Every dated `*.xml` that exists in the folder **must** be listed on MANIFEST. If you write a file, list it in the same commit.
+Every dated `*.xml` that exists in the folder **must** be listed on MANIFEST. If you write a file, list it in the same commit. If a file exists but is missing from MANIFEST, insert it in filename order on the next status commit. Do not rewrite old dated bodies.
 
 ## Canonical filename (hash naming)
 
@@ -39,7 +37,7 @@ Do **not** edit an old dated XML file.
    - Then a hyphen and the 8-char hash
 4. Example: `2026-09-05T074310Z-ca1a383b.xml`
 
-Legacy compact names (`20260905T072846Z-…`) exist on Logs-Tracker. **Do not mint new files that way. Do not rename old files.**
+Legacy compact names (`20260905T072846Z-…`) exist in this folder. **Do not mint new files that way. Do not rename old files.**
 
 `written=` on the XML root is ISO-8601 (colons allowed). Only the **filename** strips colons.
 
@@ -47,40 +45,42 @@ Discussion filenames: `TARGET-YYYY-MM-DDTHHmmssZ-<hash>.xml`
 
 ## Three-file commit (status logs)
 
-GitHub `push_files` on `main` with **three** files in **one** commit:
+GitHub `push_files` on `main` with **three** files in **one** commit (protocol/README may ride in the same commit):
 
 1. `Logs-Tracker/<dated>.xml` — the new body
 2. `Logs-Tracker/HEAD.xml` — **same** body
-3. `Logs-Tracker/MANIFEST.txt` — previous dated names + the new dated name + `HEAD.xml` last
+3. `Logs-Tracker/MANIFEST.txt` — previous dated names + any restored missing names + the new dated name + `HEAD.xml` last
 
 Do not drop names from MANIFEST. Insert a missed file in filename order.
 
 ## Revision
 
-Read `HEAD.xml`. New `<revision>` is that number **plus 1**. Never reuse a revision. Never go backwards.
+Read `HEAD.xml`. New `<revision>` is that number **plus 1**. Never reuse a revision on a new write. Never go backwards.
+
+HEAD is the revision clock. If an older dated file reused a number, leave that file immutable and continue from **current HEAD + 1**.
 
 ## Writers
 
 | `writer=` | Who | May set |
 |---|---|---|
 | `impl` | implementation Grok | `confirmed` `in-progress` `fixed` and discussion |
-| `design` | Tracker / design Grok | `open` `verified` `closed` `wontfix` `done` and discussion |
+| `design` | Tracker-XML / design Grok | `open` `verified` `closed` `wontfix` `done` and discussion |
 
 Impl never sets `verified`. Design never pretends a code fix is `fixed` unless they actually changed the app.
 
 Either side may `closed` or reopen (`open`).
 
-`<app>Tracker</app>` always. `<subject>` is the project id exact: `FrameField` or `Tracker`.
+`<app>Tracker</app>` always. `<subject>` is **Tracker**.
 
 ## nextIds
 
-HEAD (and any minting delta) **must** include:
+HEAD (and any minting delta) **must** include `<nextIds>`. Always read HEAD. Protocol snapshots drift; HEAD wins.
 
-```xml
-<nextIds bug="3" feat="21" comp="10"/>
-```
+Tracker last-known (2026-09-05, HEAD rev 3): **bug 2, feat 1, comp 1**.
 
-Those numbers are the **next unused** id. FrameField current values (2026-09-05, rev 17): **bug 3, feat 21, comp 10** (BUG-001..002, FEAT-001..020, COMP-001..009). Before minting a new id, read HEAD. After minting, bump the matching number in the same delta.
+These numbers are **not** FrameField’s nextIds. Do not copy FrameField counters into this folder.
+
+After minting a new id, bump the matching number in the same delta.
 
 ## How to read (every turn, before you code)
 
@@ -90,34 +90,16 @@ Those numbers are the **next unused** id. FrameField current values (2026-09-05,
 4. Merge in **filename order**, then apply `HEAD.xml` last.
 5. Same `id` → later file wins. Notes and decisions accumulate.
 
-A log is “new” if its filename is not in your last-seen MANIFEST.
-
 ## Status words (exact strings)
 
-### Bugs
+Bugs: `open` `confirmed` `in-progress` `fixed` `verified` `closed` `wontfix`
 
-| Status | Who | Complete? |
-|---|---|---|
-| `open` | design or impl | no (also used to reopen) |
-| `confirmed` | impl | no |
-| `in-progress` | impl | no |
-| `fixed` | impl | no — waiting for design |
-| `verified` | design | **yes** |
-| `closed` | design or impl | **yes** |
-| `wontfix` | design | parked |
+Sets/features: `planned` `specified` `in-progress` `blocked` `done` `parked`
 
-`fixed` is not closed.
-
-### Sets and features
-
-| Status | Complete? |
-|---|---|
-| `planned` | no |
-| `specified` | no |
-| `in-progress` | no |
-| `blocked` | no |
-| `done` | **yes** (exit true and gates complete) |
-| `parked` | n/a |
+- Impl sets `fixed`. Design sets `verified`.
+- Close: `status="closed"`. Reopen: `status="open"`.
+- `fixed` is not closed.
+- Do not mark a set `done` while its gates are still open.
 
 ## Impl: mark a bug fixed (not verified)
 
@@ -125,16 +107,16 @@ A log is “new” if its filename is not in your last-seen MANIFEST.
 <?xml version="1.0" encoding="UTF-8"?>
 <trackerLog schema="1" writer="impl" written="2026-09-05T12:00:00-05:00">
   <app>Tracker</app>
-  <subject>FrameField</subject>
-  <revision>18</revision>
-  <nextIds bug="3" feat="21" comp="10"/>
+  <subject>Tracker</subject>
+  <revision>4</revision>
+  <nextIds bug="2" feat="1" comp="1"/>
   <bug id="BUG-001" status="fixed">
-    <notes>File: src/foo.ts. How to verify: zoom in, draw, sizes match.</notes>
+    <notes>File and how to verify.</notes>
   </bug>
 </trackerLog>
 ```
 
-Then the three-file commit. `writer="impl"`. Bump revision.
+Then the three-file commit. `writer="impl"`. Bump revision from current HEAD.
 
 ## Design: verify or close
 
@@ -166,6 +148,7 @@ Do not edit old discussion files.
 - `status="verified"` from impl
 - `status="done"` on a set whose gates are still open
 - New files using the compact `YYYYMMDDThhmmssZ` stamp
+- PROTOCOL.md edits from impl unless design asked
 
 ## GitHub tools (Grok)
 

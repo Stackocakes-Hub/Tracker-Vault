@@ -6,8 +6,9 @@ Branch: `main`
 This repository is the shared log. It is **not** application source and **not** the Tracker website source.
 
 - **Tracker** (the website) reads and writes this vault.
-- **Design Grok** files bugs, sets, decisions; sets `verified` / `closed`.
+- **Design Grok** (Tracker-XML chat) owns `PROTOCOL.md`, files bugs/sets/decisions, and sets `verified` / `closed` / `wontfix` / `done`.
 - **Impl Grok** reads the vault and writes status (`confirmed`, `in-progress`, `fixed`).
+- Other apps follow **this GitHub file**. They do not keep a private fork of the rules.
 - Both use GitHub tools on `main`.
 
 Each project is `Logs-<ProjectName>/`. FrameField subject is **FrameField** (not Framefield). Tracker subject is **Tracker**.
@@ -18,13 +19,13 @@ See also the PROTOCOL.md inside each project folder (same rules, with that folde
 
 | Path | Role |
 |---|---|
-| `PROTOCOL.md` | This document. Read it first. |
-| `Logs-<Project>/HEAD.xml` | Newest delta. Always read. Always overwrite on write. |
+| `PROTOCOL.md` | This document. Read it first. Design owns edits. |
+| `Logs-<Project>/HEAD.xml` | Newest delta. Always read. Always overwrite on write. Revision clock. |
 | `Logs-<Project>/MANIFEST.txt` | One filename per line, oldest first, `HEAD.xml` last. |
 | `Logs-<Project>/YYYY-MM-DDTHHmmssZ-<hash>.xml` | Immutable dated entries. Never edit. Never delete. |
 | `Logs-<Project>/ID-Discussion/` | One XML file per message. |
 
-Every dated `*.xml` that exists in the folder **must** be listed on MANIFEST. If you write a file, list it in the same commit.
+Every dated `*.xml` that exists in the folder **must** be listed on MANIFEST. If you write a file, list it in the same commit. If a file exists but is missing from MANIFEST, insert it in filename order on the next status commit. Do not rewrite old dated bodies.
 
 ## Canonical filename (hash naming)
 
@@ -47,24 +48,26 @@ Discussion filenames: `TARGET-YYYY-MM-DDTHHmmssZ-<hash>.xml`
 
 ## Three-file commit (status logs)
 
-GitHub `push_files` on `main` with **three** files in **one** commit:
+GitHub `push_files` on `main` with **three** files in **one** commit (protocol/README may ride in the same commit):
 
 1. `Logs-<Project>/<dated>.xml` — the new body
 2. `Logs-<Project>/HEAD.xml` — **same** body
-3. `Logs-<Project>/MANIFEST.txt` — previous dated names + the new dated name + `HEAD.xml` last
+3. `Logs-<Project>/MANIFEST.txt` — previous dated names + any restored missing names + the new dated name + `HEAD.xml` last
 
 Do not drop names from MANIFEST. Insert a missed file in filename order.
 
 ## Revision
 
-Read `HEAD.xml`. New `<revision>` is that number **plus 1**. Never reuse a revision. Never go backwards.
+Read `HEAD.xml`. New `<revision>` is that number **plus 1**. Never reuse a revision on a new write. Never go backwards.
+
+HEAD is the revision clock. If an older dated file reused a number, leave that file immutable and continue from **current HEAD + 1**.
 
 ## Writers
 
 | `writer=` | Who | May set |
 |---|---|---|
 | `impl` | implementation Grok | `confirmed` `in-progress` `fixed` and discussion |
-| `design` | Tracker / design Grok | `open` `verified` `closed` `wontfix` `done` and discussion |
+| `design` | Tracker-XML / design Grok | `open` `verified` `closed` `wontfix` `done` and discussion |
 
 Impl never sets `verified`. Design never pretends a code fix is `fixed` unless they actually changed the app.
 
@@ -77,10 +80,19 @@ Either side may `closed` or reopen (`open`).
 HEAD (and any minting delta) **must** include:
 
 ```xml
-<nextIds bug="3" feat="21" comp="10"/>
+<nextIds bug="4" feat="21" comp="10"/>
 ```
 
-Those numbers are the **next unused** id. FrameField current values (2026-09-05, rev 17): **bug 3, feat 21, comp 10** (BUG-001..002, FEAT-001..020, COMP-001..009). Before minting a new id, read HEAD. After minting, bump the matching number in the same delta.
+Those numbers are the **next unused** id for **that project**. Always read HEAD. Protocol snapshots drift; HEAD wins.
+
+Last-known snapshots (2026-09-05):
+
+| Project | bug | feat | comp |
+|---|---|---|---|
+| FrameField | 4 | 21 | 10 |
+| Tracker | 2 | 1 | 1 |
+
+FrameField issued BUG-001, BUG-002, BUG-003 so the next bug id is **4**. After minting a new id, bump the matching number in the same delta.
 
 ## How to read (every turn, before you code)
 
@@ -126,15 +138,15 @@ A log is “new” if its filename is not in your last-seen MANIFEST.
 <trackerLog schema="1" writer="impl" written="2026-09-05T12:00:00-05:00">
   <app>Tracker</app>
   <subject>FrameField</subject>
-  <revision>18</revision>
-  <nextIds bug="3" feat="21" comp="10"/>
+  <revision>19</revision>
+  <nextIds bug="4" feat="21" comp="10"/>
   <bug id="BUG-001" status="fixed">
     <notes>File: src/foo.ts. How to verify: zoom in, draw, sizes match.</notes>
   </bug>
 </trackerLog>
 ```
 
-Then the three-file commit. `writer="impl"`. Bump revision.
+Then the three-file commit. `writer="impl"`. Bump revision from current HEAD.
 
 ## Design: verify or close
 
@@ -166,6 +178,7 @@ Do not edit old discussion files.
 - `status="verified"` from impl
 - `status="done"` on a set whose gates are still open
 - New files using the compact `YYYYMMDDThhmmssZ` stamp
+- PROTOCOL.md edits from impl unless design asked
 
 ## GitHub tools (Grok)
 
