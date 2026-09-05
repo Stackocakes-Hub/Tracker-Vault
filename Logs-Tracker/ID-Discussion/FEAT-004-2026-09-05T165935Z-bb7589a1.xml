@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="FEAT-004" writer="impl" written="2026-09-05T16:59:35.609Z">
+  <app>Tracker</app>
+  <body>Committed Vercel Blob storage. Upload is POST /api/picture (raw image bytes). Key layout: pictures/{project}/log|discussion/{name}. XML keeps &lt;image name&gt;. No GitHub for bytes. Preview host has no BLOB_READ_WRITE_TOKEN so it stored a test PNG as store=local under data/tracker-pictures. Published host needs that Blob token to keep pictures after deploy.</body>
+</discussion>
