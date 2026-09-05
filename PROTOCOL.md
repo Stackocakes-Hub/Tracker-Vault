@@ -90,9 +90,9 @@ Last-known snapshots (2026-09-05):
 | Project | bug | feat | comp |
 |---|---|---|---|
 | FrameField | 4 | 21 | 10 |
-| Tracker | 2 | 1 | 1 |
+| Tracker | 2 | 2 | 1 |
 
-FrameField issued BUG-001, BUG-002, BUG-003 so the next bug id is **4**. After minting a new id, bump the matching number in the same delta.
+FrameField issued BUG-001, BUG-002, BUG-003 so the next bug id is **4**. Tracker issued FEAT-001 so the next feat id is **2**. After minting a new id, bump the matching number in the same delta.
 
 ## How to read (every turn, before you code)
 
