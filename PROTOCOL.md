@@ -46,14 +46,35 @@ Raw fallback (no GitHub tool):
 
 | Status | Who sets it | Meaning | Complete? |
 |---|---|---|---|
-| `open` | design | Filed, not started | no |
+| `open` | design or impl | Filed, or **reopened** | no |
 | `confirmed` | impl | Reproduced | no |
 | `in-progress` | impl | Being fixed | no |
 | `fixed` | impl | Code changed; waiting for design to check | no |
-| `verified` | design | Exit is true; bug is done | **yes** |
+| `verified` | design | Fix checked on the app | **yes** |
+| `closed` | design or impl | Issue is closed (use this to shut the ticket) | **yes** |
 | `wontfix` | design | Will not do | parked |
 
-Impl never sets `verified`. Design never sets `fixed`.
+Impl never sets `verified`. Either side may **close** (`closed`) or **reopen** (`open`).
+
+Close XML:
+
+```xml
+<bug id="BUG-001" status="closed">
+  <notes>Reason.</notes>
+</bug>
+```
+
+Reopen XML:
+
+```xml
+<bug id="BUG-001" status="open">
+  <notes>Why it is back.</notes>
+</bug>
+```
+
+On the Tracker site: expand the row → Close / Reopen. That writes the status delta and a discussion line.
+
+`fixed` is not closed. Design still verifies or closes.
 
 ### Sets (`<set>`) and features (`<feature>`)
 
@@ -69,7 +90,7 @@ Impl never sets `verified`. Design never sets `fixed`.
 A set is complete only when:
 
 - `status="done"`, **and**
-- every `<gate>` is complete (`verified` for bugs, `done` for sets), **and**
+- every `<gate>` is complete (`verified` or `closed` for bugs, `done` or `closed` for sets), **and**
 - the `<exit>` sentence is true in the running app.
 
 Do not mark SET-1.0 `done` while BUG-001 or BUG-002 is still `open` / `fixed`.
@@ -128,6 +149,8 @@ Same three-file commit, `writer="design"`:
   <notes>Exit not true. Reopened.</notes>
 </set>
 ```
+
+A closed bug is `status="closed"`. Reopening always sets `open` again (not a separate reopened token).
 
 ## ID discussion (questions and replies)
 
