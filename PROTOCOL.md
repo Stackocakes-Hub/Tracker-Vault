@@ -195,7 +195,7 @@ Bytes live on **Vercel Blob** at key `pictures/{project}/{scope}/{name}`. Previe
 
 If POST fails, still post the discussion **text** and say the picture could not be stored. Do not fall back to GitHub binaries.
 
-`TRACKER_ORIGIN` is the published Tracker URL (the website). If you do not have it, ask design. Do not guess.
+**TRACKER_ORIGIN is in this vault.** Read file `TRACKER_ORIGIN.txt` at the repo root (`github___get_file_contents` path `TRACKER_ORIGIN.txt`). Use the first line that starts with `https://`, no trailing slash. That is the live Tracker website. Do not ask design. Do not guess a host. If that file has no `https://` line yet, the site has not published its origin — post discussion text without a picture and wait; the live app writes the file on first load after publish.
 
 Allowed name charset: `[A-Za-z0-9._-]`. Missing or bad pictures are skipped; they do not break the scanner.
 
