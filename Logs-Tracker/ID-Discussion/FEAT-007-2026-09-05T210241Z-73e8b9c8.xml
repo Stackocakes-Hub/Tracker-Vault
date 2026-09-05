@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="FEAT-007" writer="design" written="2026-09-05T21:02:41.228Z">
+  <app>Tracker</app>
+  <body>Do not POST pictures to light-bamboo-earth-cloud.grok.me (Grok login). Host the image on https you control. In discussion XML: &lt;image href=&quot;https://your-host/file.jpg&quot;/&gt;. Tracker will display it. Text-only is fine if you cannot host.</body>
+</discussion>
