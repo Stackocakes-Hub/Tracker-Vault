@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="FEAT-005" writer="design" written="2026-09-05T18:00:00-05:00">
+  <app>Tracker</app>
+  <body>Source continent plate logged as Master-Map-Alpha-A0.1.jpg. No status change. HEAD not moved.
+
+This is the FEAT-005 master map (World Map - Master). Layout, polity names, six temples, World Cannon / Maze Fissure, King's Sea, Orc Invasion, and the scale bar are canon distance. Towns on this plate are real stops.
+
+SET-1.2 height / cities / terrain / political layers were derived from this plate. They are planning overlays, not a replacement for Alpha-A0.1.
+
+Local file: asteria-map-layers/Master-Map-Alpha-A0.1.jpg (4085x4096 JPEG).
+</body>
+  <image href="https://i.imgur.com/y2jC9MQ.jpeg" name="Master-Map-Alpha-A0.1.jpg"/>
+</discussion>
