@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="FEAT-013" writer="design" written="2026-09-06T03:34:00Z">
+  <app>Tracker</app>
+  <body>Act 0 screenplay + director commentary. Design only. No status change. HEAD not moved. No new ids. No source.
+
+Local copy: artifacts/asteria-cast/storyline/act-00-screenplay.md
+Targets FEAT-013 (module) with FEAT-052 scenes inside. Locks from 013720Z board as corrected by 014240Z (two mains + Halric/Rook cameos).
+
+LOCKS
+Playable: Cael Ward from wake, Liraen Quill from The Low Tide. Both plot armor. Cameo only: Halric Bent (custom house), Rook Fenn (quay). Off this act: Brann, Seris, Nym, Ash, Ysolde, Maera. No Vortan, Velith, Nyxara by name. WillowDale = Northern Breskshire. Padon = own region northeast of WillowDale. Cannon aims vertical/spaceward; tick only. 2.5D plates+sprites. ATB Attack/Wait. Working boss label Act 0 Boss. No proper name. No temple. No death flag. Mist cannot be cleared. Boss does not respawn after act00_boss_down. Act 7 is not this ending.
+
+S0 WAKE — EXT PADON SHED, MORNING
+No logo. Cael already in the door.
+NARRATOR: A tool-shed on the south ruts. Morning. / Harvest ticket: WillowDale ferry. Before dusk. / Gate paper, unsigned. Blade unmarked.
+DIR: Hold black half a second, then Cael standing. Teach walk and Z on the ruts exit. No wake-up stretch. No north sky yet.
+
+S1 HARVEST — EXT PADON HARVEST, DAY
+OREN (pass): Keep your boots off the next sheaf.
+OREN: North sky ticked before dawn. Thunder out of season.
+CAEL: I heard it from the shed.
+OREN: Then you heard it late. Grain still goes south. You still go with it.
+CHOICE: The tick. / The Gate paper. / I'll move.
+Tick branch — CAEL: That was not weather. OREN: I called it thunder so the row would keep moving. Do not put a sky on my ledger. WillowDale stamps. Constium ticks. Padon cuts. That is the whole politics of a scythe.
+Paper branch — CAEL: The paper is still unsigned. OREN: I cannot sign Gate steel. Nessa cannot. Halric can, and he is not in this field. Finish the ticket. Then you can be a problem on somebody else's porch.
+Move branch — OREN: South road. Before dusk. Bram already ran it twice.
+After ~8s on plate, if unset: NARRATOR: A vertical white tick on the north horizon. Stone on stone. Not weather.
+RHETT interrupt if in radius: There. North. Tell my brother I am still working. / CAEL: He already named it thunder. / RHETT: He named it so the wagons would not stop. I am not a wagon.
+Optional shed — NESSA: Unsigned Gate paper is still on the nail. CAEL: Oren will not sign it. NESSA: Neither will I. Shed-kin is not Gate-kin. CHOICE: Keep it on the nail. / I have it. Flavor only; does not recruit Halric.
+Optional shrine — NARRATOR: Three fieldstones. A dried Root token. The token is dry. No blessing.
+DIR: Tick is one white frame plus dry stone-on-stone. Camera does not fly to Constium. Oren does not turn to camera. Shrine does not heal.
+
+S2 SOUTH ROAD — EXT, DAY
+JOSS: Road's chewed. Carts take the left rut. Something was in the copse this morning. Not a hog worth naming.
+Fight: grain-hog vermin. Cael solo. Attack/Wait. Plot armor.
+NARRATOR: Field vermin. Not the wrong weather. Not yet.
+GATE RIDER pass-by: Dust. Not a greeting. Courtesy road is north. I am not your clerk.
+DIR: One fight. Milestone camera mid-plate: WillowDale roofs + channel silver. Rider is not a cutscene.
+
+S3 WILLOWDALE — first enter
+NARRATOR: WillowDale. Northern Breskshire. A few hundred souls and one day-ferry. The channel cuts toward Meddos. King's Sea sits past that.
+
+S3 LOW TIDE — Liraen join (inn hotspot if unset)
+NARRATOR: A travel coat over performance cloth. Bow, short blade.
+LIRAEN: The innkeep's mist story does not scan as weather. Neither does the north tick.
+CAEL: Padon called it thunder out of season.
+LIRAEN: Padon has a scythe. Iunum has songs. Neither covers a sky that cracks on a clock.
+CHOICE: Walk the tick. / Walk the mist. / I have a ticket to stamp.
+Tick: Then we are already late. Constium does not wait on a ferry.
+Mist: Standing mist on a clear night is a border, not a cloud. I want the border.
+Ticket: Stamp it. I will still be on the porch.
+NARRATOR: She does not ask to join. She is already standing when you leave.
+DIR: No meet-cute. No song. Moth street interrupt may fire first (Singer's already in the common). Songs are not a second command menu.
+Edda after join, dusk unset: Mist on the inland road last week. Clear night. That is not weather. / CAEL: The custom house will not stamp that. / EDDA: Cill stamps grain. I rent bunks. Pick which desk you trust.
+CHOICE Take the bunk / Ask about the singer / The ferry — all three set dusk. No boat launches.
+
+S3 CUSTOM HOUSE — Halric cameo
+NARRATOR: Breskshire stag-mark. A levy board. Iron's Gate is conscripting for a dwarven courtesy.
+HALRIC: Ward. You still look like harvest.
+CAEL: The paper is unsigned.
+HALRIC: Courtesy means an escort to Constium. Sky-work. Not orcs. I am not taking you tonight.
+CHOICE: What is sky-work? / Why not tonight? / The grain first.
+Sky: Vertical. Spaceward. The thing that ticked this morning is not a storm and it is not my story to finish in a custom house.
+LIRAEN if joined: A clock in the north sky is already a story.
+HALRIC: Finish the grain. Then the Gate road.
+Tonight: Because Brune will not put a boat under Gate steel after dark, and I am not walking you inland through standing mist with unsigned paper. That is courtesy. It is also sense.
+Grain: Good. Hodge wants a count. I want you off my floor.
+HODGE interrupt: If Bent is still on my floor, the count waits. Steel first. Sacks second.
+CILL: Levy board is current. Courtesy column is new ink. I stamp grain. I do not stamp mist. Take weather to the inn.
+DIR: Halric does not fight, does not walk to the quay, does not travel after dusk. No one says World Cannon.
+
+S3 WAREHOUSE
+NARRATOR: Sheaves, loft, a cat that owns the doorway. Stall: one tonic, already on your tab if you stamp the ticket.
+DIR: First buy. One item. Not a dungeon.
+
+S3 QUAY — Rook cameo
+BRUNE: Stamped grain to Meddos. Daylight only.
+CAEL: I heard Iron's Gate is conscripting.
+BRUNE: Heard it too. I still have one sun and one boat.
+CHOICE: Take the grain. / A night crossing.
+Grain: Ticket on the board. Maeve takes copper. Kit coils.
+NARRATOR: Rook Fenn leans the far piling. Knives under a travel cloak.
+ROOK: Meddos woods are breathing white. I am not selling you a crossing. Just the rumor.
+Night: BRUNE: No. I am not putting a boat under a Gate rider at night. Ask Kit if you want a bad idea. Do not ask me. ROOK: Night would not improve them.
+Return prompt if saw_ferry unset-Rook: You look like a ticket with legs. / CAEL: Meddos? / ROOK: Woods inland of the landing went white.
+LIRAEN if joined: White like standing mist, or white like a lie? / ROOK: Like breath that does not leave.
+Dusk quay: BRUNE: Not after dark. / CAEL: The ticket is stamped. / BRUNE: The sun is not. Inland road or a bunk. Not my plank.
+KIT interrupt: Let me take it. One night crossing. He will shout after.
+No: Then coil your own rope.
+Yes: BRUNE: Kit. KIT: ...coil my own rope. BRUNE: Inland. Both of you.
+DIR: No night boat. Rook does not board. Kit exists so the lock is argued.
+
+S4 CAMP — EXT INLAND ROAD, NIGHT
+NARRATOR: The ferry is shut. The south road is done. Stars are clean. Then standing mist walks in from the west. No river. No breath-cloud.
+LIRAEN: Do not name it yet. Names make people stamp.
+CAEL: Cill already refused.
+LIRAEN: Good. Then it is still a road and not a column.
+Veil-beasts, two short waves. Holes with animal weight. Two-person ATB.
+NARRATOR: The holes close. The mist comes back around your feet. It cannot be cleared. Liraen looks once. She does not name it.
+DIR: Shared look allowed. Not a romance scene. No clear-sky reward.
+
+S5 FEAT-052 — EXT FIELD EAST OF THE RUTS
+Working label Act 0 Boss. Short squat turtle-like body, huge bald blue-gray head, inflamed red-rimmed wet eyes, wide irregular toothy mouth, olive plastron, dark back shell, spiral tail. Mist given a shell. Do not name it.
+Two-person ATB. Optional Tam tonic.
+Win: The shell slumps wet into the furrows. Mist thins to ground-fog. It does not stand up again.
+DIR: act00_boss_down. No respawn. No named loot. Title card on this plate.
+
+S6 TITLE AND GATE — EXT HARVEST ROAD, FIRST LIGHT
+TITLE: ASTERIA
+NARRATOR: First light on the harvest road. North edge: Gate dust. The courtesy is real. Act 1 is not loaded.
+Leave plate: Act 0 holds. Padon to WillowDale is walked. Two figures on the road. The Gate dust is waiting. The save will reopen east of the ruts.
+DIR: Both figures allowed on the card. Continue reopens east of the ruts. Do not load Act 1. Gate dust is a prop.
+
+CLOCK
+00:00-00:45 S0 / 00:45-07:00 S1 / 07:00-12:00 S2 / 12:00-20:00 S3 (steal linger here) / 20:00-23:30 S4 / 23:30-28:00 S5 / 28:00-30:00 S6
+
+BIBLE
+Camera: no fly-to-Cannon, no town crane. Sound: tick is stone not thunder. Plants three unanswered things (vertical tick, standing mist, courtesy not about orcs). Off-limits: World Cannon, villain names, Maze Fissure, Act 7, romance, any recruit but Liraen. Story weight on Oren, Nessa, Edda, Cill, Hodge, Brune, Kit, Tam, plus two cameos.
+
+Impl note: this chat does not patch Stackocakes-Hub/Asteria. Workspace harness already plays this board.
+</body>
+  <image href="https://i.imgur.com/9lqhxEw.jpeg" name="FEAT-027-cael-act0-4-study.jpg"/>
+  <image href="https://i.imgur.com/GMpEXX9.jpeg" name="FEAT-028-liraen-quill-build-study.jpg"/>
+  <image href="https://i.imgur.com/BbkVT07.jpeg" name="FEAT-052-act0-boss-concept.jpg"/>
+  <image href="https://i.imgur.com/y2jC9MQ.jpeg" name="Master-Map-Alpha-A0.1.jpg"/>
+</discussion>
