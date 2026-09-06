@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="FEAT-051" writer="design" written="2026-09-06T09:05:41.433Z">
+  <app>Tracker</app>
+  <body>Updating Runtime Stack to as follows:
+Split
+PixiJS — title, menus, overlay HUD only.
+Three.js — the 2.5D world. Raw Three, not R3F. Hide the Pixi canvas while it’s up.
+Meshy — production .objs. Not in the connected tools here yet; Imagine can still make the top/front/side plates.
+
+World
+Octopath-style: real 3D, oil-paint, no world sprites.
+Rectangular heightmap. No spheres, island falloff, or sky dome.
+Characters yaw to camera. Clip table exists (idle / walk / attack); bob only until real frames.
+
+Grid
+CELL = 1 = character width = one tile. MAP 256, HEIGHT 12.
+Everything snaps to cell centers. One blocker per cell.
+4-dir steps, not analog slide. A/D = screen left/right.
+
+New objects
+Def in  (occupy / width / block) first.
+Ortho plates: top, front, side.
+Meshy → .obj.
+Load at cell center, footprint = occupy × CELL.
+Primitives are stand-ins with the same occupancy — replace, don’t fork.
+
+Boot
+Title loads title-card PNGs only. Three.js and Act 0 art wait.
+New Game → Act 0 (on hold). Debug → Level −2.</body>
+</discussion>
