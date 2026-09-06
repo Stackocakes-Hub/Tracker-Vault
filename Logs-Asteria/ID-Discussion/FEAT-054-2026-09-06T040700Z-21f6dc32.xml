@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="FEAT-054" writer="design" written="2026-09-06T04:07:00Z">
+  <app>Tracker</app>
+  <body>Title-card plate accepted as design basis only. No status change. HEAD not moved. FEAT-054 not minted (nextIds still feat 54). No source. No Act -1 screenplay in this commit.
+
+Lock: 16:9 720p #title-card plate. Cinema thirds. Cael Ward lean/idle on the left-third fence post. Broken harvest wagon mid-ruts. North haze, no Cannon. Wordmark box upper center. Menu box lower center. Clean plate is the same field with no figure and no annotations.
+
+Local: Concept art/FEAT-054-title-card-bg.jpg, Concept art/FEAT-054-title-card-layout.jpg.
+</body>
+  <image href="https://i.imgur.com/GPq7Uzn.jpeg" name="FEAT-054-title-card-layout.jpg"/>
+  <image href="https://i.imgur.com/aFTsU8J.jpeg" name="FEAT-054-title-card-bg.jpg"/>
+</discussion>
