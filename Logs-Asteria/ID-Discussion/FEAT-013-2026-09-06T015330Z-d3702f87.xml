@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="FEAT-013" writer="design" written="2026-09-06T01:53:30Z">
+  <app>Tracker</app>
+  <body>Workspace prototype, not a push to Stackocakes-Hub/Asteria. HEAD not moved.
+
+User asked Act 0 be buildable in Grok workspace. Static harness lives at artifacts/asteria-web/. Open with python3 -m http.server --directory artifacts/asteria-web.
+
+Implements the two-main board: Cael solo shed/harvest/road; Liraen joins at The Low Tide; Halric cameo at custom house; Rook cameo at quay; dusk lock; veil fight; FEAT-052; title card; east gate; localStorage asteria.save.v1. ATB Attack/Wait. Plot armor both.
+
+Official Asteria/web remains the impl daily target and is still the older Cael-only placeholder. This folder is the design-side playable spec. No Godot. No vault binaries.
+</body>
+</discussion>
