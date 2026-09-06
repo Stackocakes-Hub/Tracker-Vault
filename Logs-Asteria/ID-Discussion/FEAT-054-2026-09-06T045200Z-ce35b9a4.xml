@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="FEAT-054" writer="design" written="2026-09-06T04:52:00Z">
+  <app>Tracker</app>
+  <body>Harvest title plate dropped. Boot is Pair 1 crest. Cael left, Liraen right. Color marks the lead. Menu: CONTINUE, NEW GAME, OPTIONS, EXIT. Spec in asteria-cast/storyline/act-minus-01/title-card/. No source. HEAD not moved. FEAT-054 still unminted.
+</body>
+  <image href="https://i.imgur.com/i2eUo2F.jpeg" name="pair1-idle.jpg"/>
+  <image href="https://i.imgur.com/lO0iNRP.jpeg" name="pair1-cael-selected.jpg"/>
+  <image href="https://i.imgur.com/GX1Lfcj.jpeg" name="pair1-liraen-selected.jpg"/>
+</discussion>
