@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="FEAT-013" writer="design" written="2026-09-06T01:42:40Z">
+  <app>Tracker</app>
+  <body>User correction. Supersedes the Cael-only line on the 013720Z Act 0 board.
+
+Playable in Act 0: Cael Ward and Liraen Quill only. Active-battle cap is still three; Act 0 uses two. Both have plot armor. No main-side joins the party here.
+
+Side characters may be introduced only (walk, talk, leave). Recommended cameos so the 30 min clock holds:
+- Halric Bent at WillowDale custom house or the north-road dust-line. Gate foil. Does not fight. Does not travel with them after dusk.
+- Rook Fenn optional at the Meddos-facing quay or Low Tide doorway. Road knife. Does not fight. Ferry gossip only.
+Do not introduce Brann, Seris, Nym, Ash, Ysolde, or Maera on screen in Act 0.
+
+Liraen intro (replaces "no bard on the quay"):
+- Origin still Iunum / Valley of Songs. She is on the King's Sea ferry net because the north sky is ticking and the songs about it do not match weather.
+- Cael remains solo for S0 wake, S1 harvest, S2 south road (one vermin fight still teaches ATB on one sprite).
+- S3 WillowDale: she is already at The Low Tide or the quay, travel coat over performance cloth, bow and short blade. She has heard the same inland-mist story the innkeep tells. She does not narrate a meet-cute. One or two lines. She walks out with him when the ferry locks at dusk.
+- S4 mist and S5 FEAT-052 are a two-person ATB. Attack/Wait only. Her songs are not a second command menu in this slice.
+- Shared look after WillowDale mist now lives in S4/S5, still suggestive, not a romance scene.
+- S6 title may show both figures on the road. Act 1 Gate road is walked together.
+
+Clock stays ~30 min. Steal the extra minutes from WillowDale town linger, not from the harvest tick or the boss.
+
+Impl note: web harness and Godot Act 0 still say Cael only. That is now behind this lock. This chat does not patch source.</body>
+  <image href="https://i.imgur.com/9lqhxEw.jpeg" name="FEAT-027-cael-act0-4-study.jpg"/>
+  <image href="https://i.imgur.com/GMpEXX9.jpeg" name="FEAT-028-liraen-quill-build-study.jpg"/>
+</discussion>
