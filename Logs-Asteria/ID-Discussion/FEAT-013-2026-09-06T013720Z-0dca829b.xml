@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="FEAT-013" writer="design" written="2026-09-06T01:37:20Z">
+  <app>Tracker</app>
+  <body>Act 0 full storyboard. Design lock for FEAT-013 + FEAT-052. ~30 min play. No status change. HEAD not moved. No new ids. No source.
+
+LOCKS THIS BOARD MUST KEEP
+- Cast on screen: Cael Ward only. No recruit. No death flag. No temple entered.
+- Locations: Padon fields, south harvest road, WillowDale ferry landing, mist camp, field east of the ruts.
+- Beats already specified: harvest morning + north sky tick; WillowDale ferryman will not cross after dark (Iron's Gate conscripting for a dwarven courtesy); night camp; mist on a clear inland road; unformed veil-beasts; FEAT-052 boss; title card.
+- WillowDale is Northern Breskshire. Padon is its own region northeast of WillowDale.
+- World Cannon aims vertical / spaceward. Distant tick only. Not visited.
+- Presentation: 2.5D plates + sprites (FEAT-046). ATB slice Attack/Wait (FEAT-006 Act 0 only). Cael plot armor (FEAT-027).
+- Impl already has: title, HarvestRoad, east gate back to title, save user://asteria_save.json, boss does not respawn after act00_boss_down, return to field east of the ruts. This board orients those placeholders to canon geography (south to WillowDale; boss field is a cut east off the ruts).
+- Liraen, Rook, Halric, Brann, Seris, Nym, Ash, Ysolde, Maera do not walk Act 0. Shared-look romance beat is Act 1, not this module.
+- Working boss label stays "Act 0 Boss". No proper name.
+
+WORLD BACKGROUND THE PLAYER CAN ACTUALLY MEET IN 30 MIN
+Asteria is one continent plus the west isle. Four named polities and two unclaimed belts surround Padon. Act 0 does not lecture this. It leaks it.
+
+- Breskshire (Human Empire) owns the southwest peninsula. WillowDale is its northern ferry town, not a capital. Stag-mark on the custom house. Grain tax and levy paper both come from here.
+- Padon is independent grain basin: plains between Iron's Gate (north), King's Sea (east), Meddos woods (southwest), Constium foothills (north). Not a capital. Pays Breskshire in sheaves and Iron's Gate in courtesy so neither plants a flag.
+- Constium (Dwarven Empire) holds the Titan spine. They are building the World Cannon on the Maze Fissure. Barrel points at the sky, not at the Orc Invasion. Farmers call the test-fire "thunder out of season."
+- Iunum (Elven Empire) is the east bulge across King's Sea. Songs and ferry gossip only.
+- Bengenia (Pale Kingdom) is the west isle. Its temple weather is standing mist. That weather is starting to appear where it should not.
+- Orc Invasion is the northeast Brass Lands / Breakwoods belt. Not visible from Padon except as a rumor that "the courtesy" is about the north, not about orcs.
+- Six temples govern aspects (Mist/Veil, Earth/Keystone, Water/Undertow, Fire/Cinder, Life/Root, Light/Meridian). Act 0 sees only a neglected Life field-shrine. Mist cannot be cleared; that rule is demonstrated, not explained.
+- King's Sea is the inland water. WillowDale's channel feeds it. Daylight ferry only.
+- Iron's Gate is the human mountain pass under Constium. Cael has unfinished squire paper there. The "dwarven courtesy" is an honor escort the Gate is raising so Breskshire looks serious when it visits the Cannon works. Act 1 starts on that road. Act 0 only hears the rumor.
+
+PADON — REGION DESIGN
+Not a city. A basin of hamlets, cart-ruts, and sheave-yards.
+- Ground: pale gold stubble, dark ruts that hold yesterday's rain, low stone walls that do not keep anything out.
+- Skyline north: faint industrial bruise (Constium / Cannon). Not a readable barrel until a later act.
+- Skyline south: WillowDale roofs and a silver cut of channel.
+- Life shrine: three stacked fieldstones with a dried Root token. Farmers tap it for luck. No priest.
+- Cael's start: a tool-shed on the south ruts of a nameless Padon hamlet. Worn Gate coat, unmarked blade, harvest ticket in the pocket.
+- Tone: FF9 pastoral, FF7 smudge on the north horizon.
+
+WILLOWDALE — CITY DESIGN (walkable, small)
+Northern Breskshire ferry landing. A few hundred people. One screen-and-a-half, four named stops, no dungeon.
+1. Quay / ferry slip. Timber deck, one rope bollard, a flat-bottom day-ferry. Gate closes at dusk. Ferryman sits on the capstan.
+2. Custom house. One-storey stone, Breskshire stag-mark, a nail-board of levy notices. The live notice: Iron's Gate is conscripting for a dwarven courtesy. Stamp the harvest ticket here.
+3. Sheaf warehouse. Open ground floor, loft, cats. Optional crate tutorial and a potion stall in the doorway.
+4. The Low Tide. Inn, one common room, one rented bunk. Rest + first explicit save prompt.
+Alleys exist as collision, not content. No barracks. No temple. Chapel-nook is a Life plaque with the paint peeling. Across the water: Meddos treeline. East-northeast, unseen: Padon fields the player just left.
+
+RUNTIME CLOCK (~30 min, new player, no grind)
+00:00-00:45  Wake. Shed. Move tutorial. No logo yet.
+00:45-07:00  Harvest morning. Talk. Cannon tick. Take the south road.
+07:00-12:00  South road. One vermin fight. Shrine optional. First view of the channel.
+12:00-20:00  WillowDale. Ticket, ferryman lock, inn save, buy one item. Dusk flag.
+20:00-23:30  Inland camp north of town. Clear stars, then standing mist.
+23:30-28:00  Veil-beasts, then FEAT-052 in the field east of the ruts.
+28:00-30:00  Title card. Save. East gate to title. Continue returns east of the ruts. Act 1 not loaded.
+
+SCENE BOARD
+
+S0 WAKE (plate: shed interior / first field)
+- Fade from black onto Cael standing in the shed door. Morning. No title.
+- Teach walk, interact.
+- Examine: harvest ticket ("WillowDale ferry. Before dusk."), Gate paper (unfinished, unsigned), blade (unmarked).
+- Exit onto the ruts.
+
+S1 HARVEST MORNING, PADON FIELDS (plate: gold basin, ruts, north haze)
+- Farmers already working. One line, no cutscene dump.
+- Foreman (or aunt-voiced NPC): the north sky ticked before dawn. They call it thunder out of season. "Gate paper still unsigned, boy. Grain goes south. You go with it."
+- Beat: a vertical white tick on the north horizon. One frame. Sound is a dry stone-on-stone crack, not weather. Camera does not fly to the Cannon.
+- Soft objective: walk the south road to WillowDale, stamp the ticket, be back or bunked before dark.
+- Optional: tap the Life shrine. Text: the token is dry. No blessing.
+- Purpose: the world already has a wrong weather and a wrong sky, and nobody has a name for either.
+
+S2 SOUTH HARVEST ROAD (plate: road, copse, distant roofs)
+- Linear plate with two short loops: Life shrine already used or not; a scarecrow copse.
+- First fight here, not in town: field vermin (rats / corvids / grain-hogs). ATB Attack / Wait only. Cael cannot drop to 0.
+- No veil-beasts yet.
+- Milestone camera: WillowDale roofs + channel silver. Constium bruise still north behind the player.
+- If the player idles toward dusk on this plate, push them: "The ferryman does not run after dark."
+
+S3 WILLOWDALE FERRY LANDING (plates: quay, custom house yard, warehouse door, Low Tide common)
+How the town teaches the world:
+- Ferryman, daylight: will take stamped grain across to the Meddos landing. After dark he will not. "Heard Iron's Gate is conscripting for a dwarven courtesy. I am not putting a boat under a Gate rider at night."
+- Custom house board: the courtesy is an escort to Constium. Barrel talk is "the dwarves' sky-work." No NPC says World Cannon. No NPC says Vortan.
+- Warehouse stall: one heal item. First buy.
+- Low Tide: rest. First save that writes user://asteria_save.json. Innkeep: "Mist on the inland road last week. Clear night. That is not weather."
+- Failed ferry interact after dusk flag: "Not after dark." This is the lock that turns the player back onto the inland road.
+- No recruit at the quay. No bard. No Gate knight on the dock. A sealed Gate letter may sit on the custom-house counter; reading it only repeats the conscription line.
+
+S4 NIGHT CAMP, INLAND ROAD (plate: cart-track north of town, clear stars)
+- Cael camps because the ferry is shut and the south road is done.
+- Stars are clean. Then standing mist walks in from the west-of-frame, inland, no river, no breath-cloud.
+- First fight: unformed veil-beasts. They read as holes with animal weight, not as Bengenia natives. Two waves, short.
+- Purpose: Mist cannot be cleared. The player swings through it and it comes back around the sprite.
+
+S5 ACT 0 BOSS, FIELD EAST OF THE RUTS (plate: stubble field, mist knee-high, ruts in the west edge)
+- Cut or walk-off east of the camp ruts.
+- FEAT-052 lock, working label Act 0 Boss. Short squat turtle-like body, huge bald blue-gray head, inflamed red-rimmed wet eyes, wide irregular toothy mouth, olive plastron, dark back shell, spiral tail.
+- It is mist given a shell, not a Padon animal. Do not name it.
+- ATB. Attack / Wait. Plot armor. Optional one item from WillowDale.
+- Win: the body slumps wet into the furrows. Mist thins to ground-fog. Flag act00_boss_down. Does not respawn.
+- Return: field east of the ruts, first light.
+
+S6 TITLE AND GATE (plate: harvest road at first light, then title)
+- Title card ASTERIA over the road. No party silhouette except Cael if a figure is required.
+- Save.
+- East gate on this plate returns to the title. Continue from title returns east of the ruts.
+- Hook only, no load: at the north edge of the field a Gate dust-line exists as a prop. Text if examined: riders. The courtesy is real. Act 1 (Breskshire / Meddos / Timshaw / Iron's Gate) is the next module. This module ends.
+
+INTRODUCTIONS
+On screen, playable: Cael Ward (FEAT-027). Padon origin. Iron's Gate squire paper unfinished. Worn Gate coat, unmarked blade, short sentences.
+On screen, NPC only: Padon foreman/aunt; WillowDale ferryman; custom-house clerk; Low Tide innkeep; warehouse stall.
+Off screen, named by rumor only: Iron's Gate; the dwarves of the north; "sky-work." Do not name Vortan, Velith, Nyxara, Liraen, Rook, Halric.
+World systems introduced by doing, not by menu: walk, talk, examine, buy, rest/save, ATB Attack/Wait, plot armor, dusk flag, mist that returns, boss that does not.
+
+WHAT THIS ACT IS FOR
+Teach the verbs. Plant three wrong things (vertical tick, inland mist, Gate courtesy that is not about orcs). Point the next module at Iron's Gate without leaving Padon-WillowDale. Thirty minutes. Then title.</body>
+  <image href="https://i.imgur.com/csjoJJL.jpeg" name="FEAT-013-padon-willowdale.jpg"/>
+  <image href="https://i.imgur.com/y2jC9MQ.jpeg" name="Master-Map-Alpha-A0.1.jpg"/>
+  <image href="https://i.imgur.com/9lqhxEw.jpeg" name="FEAT-027-cael-act0-4-study.jpg"/>
+  <image href="https://i.imgur.com/BbkVT07.jpeg" name="FEAT-052-act0-boss-concept.jpg"/>
+</discussion>
