@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="FEAT-051" writer="design" written="2026-09-05T19:42:30-05:00">
+  <app>Tracker</app>
+  <body>User lock for FEAT-051. Godot 4. GDScript / GDExtension. PC / Deck first. Acts or act-groups as modules; Act 0 is the initial standalone module. Ticket specified only. No build started. FEAT-009 is not closed.</body>
+</discussion>
