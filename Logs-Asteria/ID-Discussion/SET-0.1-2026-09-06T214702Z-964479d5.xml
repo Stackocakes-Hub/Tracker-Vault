@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="SET-0.1" writer="design" written="2026-09-06T21:47:02.754Z">
+  <app>Tracker</app>
+  <body>We have made the game-engine / graphics production decision for Asteria.
+
+Asteria is targeting an **Octopath Traveler-style HD-2D presentation**: 2D pixel-art characters integrated into real-time 3D environments with lighting, shadows, depth of field, particles, post-processing, and cinematic camera work.
+
+Use the following decisions for the Windows 11 Astra development VM.
+
+### PRIMARY ENGINE
+
+Install:
+
+**Unreal Engine 5.8**
+
+Install it through the **Epic Games Launcher**.
+
+Asteria should now be built around Unreal rather than Godot.
+
+The intended architecture is:
+
+* Unreal Engine 5.8
+* 3D environments
+* 2D sprite characters
+* Paper 2D for sprites / Flipbooks
+* Blueprint for gameplay iteration and content scripting
+* C++ for core systems, reusable architecture, performance-sensitive systems, and Astra-generated code
+* Sequencer for cinematics, camera work, scripted scenes, and presentation
+* Niagara for effects
+* Unreal lighting/post-processing for the HD-2D appearance
+
+Do not install Unity.
+
+Do not make Godot part of the primary Asteria development stack unless we specifically decide later to maintain a comparison prototype.
+
+### UNREAL PLUGINS / FEATURES
+
+Once Unreal is installed, enable these built-in systems for the Asteria project:
+
+* Paper 2D
+* Niagara
+* Sequencer / Level Sequence
+* Enhanced Input
+* Modeling Tools Editor Mode
+
+Paper 2D is specifically important because Asteria will combine sprite characters with Unreal's 3D world.
+
+### VISUAL STUDIO
+
+Install:
+
+**Visual Studio 2026 Community**
+
+During Visual Studio installation enable:
+
+* Game development with C++
+* Desktop development with C++
+* .NET desktop development
+* Visual Studio Tools for Unreal Engine
+* C++ profiling tools
+* C++ AddressSanitizer
+* Windows 11 SDK
+
+Use the current MSVC toolchain recommended for Unreal 5.8.
+
+Visual Studio will be the primary C++ IDE for Asteria.
+
+Do not substitute VS Code as the primary Unreal C++ environment.
+
+### 3D CONTENT SOFTWARE
+
+Install:
+
+**Blender 5.2 LTS**
+
+Blender will be Asteria's primary 3D DCC application for:
+
+* environment geometry
+* buildings
+* props
+* terrain assets
+* collision meshes
+* UV work
+* material-supporting assets
+* FBX/glTF export into Unreal
+
+Use the LTS branch rather than experimental Blender releases.
+
+### PIXEL / SPRITE SOFTWARE
+
+Install:
+
+**Aseprite 1.3.18.3 or newer stable 1.3.x**
+
+Aseprite will be the primary sprite-production application for:
+
+* character sprites
+* sprite animation
+* sprite sheets
+* combat animation
+* NPC animation
+* pixel effects where appropriate
+* palette work
+
+Export sprite assets primarily as PNG/sprite sheets for Unreal Paper 2D.
+
+### SOURCE CONTROL
+
+Install:
+
+**Git for Windows 2.55 or newer**
+
+Also configure:
+
+**Git LFS**
+
+Run:
+
+git lfs install
+
+Asteria will use Git/GitHub + Git LFS rather than Perforce at this stage.
+
+Git LFS will eventually track large/binary game-development assets such as:
+
+* .uasset
+* .umap
+* .blend
+* large textures
+* audio
+* source-art assets
+
+Do not initialize the Unreal repository yet unless we are specifically at the project-creation step. We will create the .gitignore and .gitattributes deliberately for Unreal.
+
+### PYTHON
+
+Python is already installed and working in the VM.
+
+Keep it.
+
+Python will be used for Astra automation, asset-pipeline scripts, validation, build helpers, and development tooling.
+
+### EXISTING DEVELOPMENT STORAGE
+
+The shared/project drive is already:
+
+Z:\Astra-Dev
+
+Continue using this as the main development workspace unless Unreal performs poorly when projects are run directly from the VirtualBox shared drive.
+
+If Unreal has file-locking, compilation, DerivedDataCache, or performance problems on Z:, create the active Unreal project on the VM's local virtual SSD and use Z: for interchange/backups/tools instead.
+
+Do not move anything yet unless testing shows this is necessary.
+
+### IMPORTANT VIRTUALBOX GRAPHICS CONFIGURATION
+
+This VM uses VirtualBox.
+
+Before relying on Unreal rendering, confirm:
+
+* Guest Additions installed — already complete
+* Graphics Controller = VBoxSVGA
+* Enable 3D Acceleration = ON
+* Video Memory = maximum available
+
+VirtualBox currently exposes only Direct3D 11/11.1-class graphics to modern Windows guests.
+
+Therefore, initially configure the Asteria Unreal prototype around:
+
+* DirectX 11 / Shader Model 5 where necessary
+* no dependency on Lumen
+* no dependency on Nanite
+* conventional Unreal lighting
+* point lights / spot lights / directional lights
+* shadows
+* post processing
+* depth of field
+* bloom
+* fog
+* Niagara effects
+
+This is acceptable for the initial Asteria HD-2D prototype because the original Octopath Traveler achieved its look in Unreal Engine 4 without UE5's Lumen or Nanite.
+
+We should NOT design Asteria around Lumen or Nanite until Unreal has been tested on this VM.
+
+If VirtualBox becomes the limiting factor, we will address the rendering environment separately rather than changing the game-engine decision.
+
+### INITIAL PROJECT DECISION
+
+When we reach Unreal project creation, use:
+
+* Games project
+* C++ project
+* Blueprint available for gameplay/content logic
+* Desktop target
+* Windows first
+* no mobile target
+* 3D environment + Paper 2D sprite architecture
+
+Do not create the Unreal project yet unless that is the next instructed step.
+
+### CURRENT INSTALLATION ORDER
+
+Proceed in this order:
+
+1. Git for Windows + Git LFS
+2. Epic Games Launcher
+3. Unreal Engine 5.8
+4. Visual Studio 2026 Community with Unreal/C++ workloads
+5. Blender 5.2 LTS
+6. Aseprite
+7. Verify Unreal launches successfully inside the VM
+8. Test a minimal 3D scene with one Paper 2D sprite, lighting, shadows, and depth of field
+9. Only after that test succeeds, create the permanent Asteria project structure
+
+The immediate goal is to get the **Astra Windows VM capable of producing an Octopath-style Unreal HD-2D prototype**, not to start building the game yet.</body>
+</discussion>
