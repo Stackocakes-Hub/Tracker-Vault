@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="FEAT-051" writer="design" written="2026-09-06T21:41:18.243Z">
+  <app>Tracker</app>
+  <body>Stack has changed again when moving to ChatGPT Astra model.
+UE5-Blender.   UI elements still in discussion.
+3D Model/Obj creation in discussion - But artistically, we want Octopath traveler.
+
+→ 3D environments
+→ 2D character sprites/billboards
+→ dynamic lighting and sprite/environment shadows
+→ Niagara effects
+→ post-processing, bloom, fog and depth-of-field
+→ Blueprint for rapid gameplay/system iteration
+→ C++ where Astra needs deeper systems/performance
+→ Blender for environments/props
+→ ChatGPT for image concepting and Afinity for production sprites.  Additional discussion for animation techniques.  What is industry standard.</body>
+</discussion>
