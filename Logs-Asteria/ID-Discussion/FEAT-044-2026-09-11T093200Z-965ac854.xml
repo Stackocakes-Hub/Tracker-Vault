@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discussion schema="1" target="FEAT-044" writer="design" written="2026-09-11T09:32:00Z">
+  <app>Tracker</app>
+  <body>User lock, Act 13 last image.
+
+Cael sadly accepts the office the world calls God of Life. That office is God of Death. Liraen becomes the new Goddess of Life. They stay together and separate: mirrors of each other's offices, not a shared throne and not a household cutscene. No kiss. No marriage. Both live.
+
+Predecessor God of Life is Vortan (FEAT-049), spoken as "Vorath" in the ask. Do not mint Vorath.
+
+Still one ending (FEAT-037). Plug/seal thesis is not deleted: Nyxara sealed, Cannon spiked as a plug, Asteria scarred and standing. The succession sits on top of that as the last frame.
+
+Open on this ticket: last-fight body. Current lock is Nyxara (FEAT-050), Vortan is not the Act 13 last fight. User line is "after defeating Vortan." Do not silently drop Nyxara. Confirm next pass whether Vortan is a phase, an Act 12 mid-fight, or the last body.
+
+Local design: asteria-cast/storyline/act-13-ending.md. No app source from this pass.</body>
+</discussion>
